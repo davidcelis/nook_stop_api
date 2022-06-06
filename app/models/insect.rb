@@ -1,0 +1,2 @@
+class Insect < Creature
+end
