@@ -9,6 +9,5 @@ class Villager < ApplicationRecord
   belongs_to :default_workbench, class_name: "ItemVariant"
   belongs_to :default_kitchen_equipment, class_name: "ItemVariant"
 
-  has_many :item_defaults
-  has_many :default_items, through: :item_defaults, source: :item
+  has_many :default_items
 end

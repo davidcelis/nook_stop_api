@@ -241,15 +241,12 @@ class CreatureCreator
     }
 
     ["northern", "southern"].each do |hemisphere|
-      attributes.dig("activeMonths", "northern").each do |month_config|
+      attributes.dig("activeMonths", hemisphere).each do |month_config|
         hours = month_config["activeHours"].flatten.map(&:to_i)
-        hours = (hours == [0, 0] ? nil : hours.first..hours.last)
 
-        creature.active_times[hemisphere] << {
-          "month" => month_config["month"],
-          "hours" => hours,
-          "season" => month_config["season"]
-        }
+        creature.active_times[hemisphere] << month_config.slice("month").tap do |month|
+          month["hours"] = hours unless hours == [0, 0]
+        end
       end
     end
 
