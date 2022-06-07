@@ -3650,13 +3650,18 @@ interface PlaceableItem {
 
 type Query {
   """
-  Returns a single item by internal ID.
+  Returns a single item by internal ID or name. One and only one must be provided.
   """
   item(
     """
     The ID of the item used internally by Animal Crossing.
     """
-    id: Int!
+    internalId: Int
+
+    """
+    The name of the item. This argument is not case sensitive.
+    """
+    name: String
   ): Item!
 
   """

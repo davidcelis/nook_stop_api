@@ -13384,7 +13384,7 @@
           "fields": [
             {
               "name": "item",
-              "description": "Returns a single item by internal ID.",
+              "description": "Returns a single item by internal ID or name. One and only one must be provided.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -13398,16 +13398,24 @@
               "deprecationReason": null,
               "args": [
                 {
-                  "name": "id",
+                  "name": "internalId",
                   "description": "The ID of the item used internally by Animal Crossing.",
                   "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "Int",
-                      "ofType": null
-                    }
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "name",
+                  "description": "The name of the item. This argument is not case sensitive.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
                   },
                   "defaultValue": null,
                   "isDeprecated": false,
