@@ -18,6 +18,8 @@ module Interfaces::Item
   field :alternative_currency, Enums::Currency, description: "An alternative currency with which this item can be purchased."
   field :alternative_price, Integer, description: "The amount of alternative currency with which this item can be purchased."
 
+  field :variants, [Objects::ItemVariant], null: false, description: "A list of one or more unique variants of this item."
+
   # Metadata
   field :added_in_version, Scalars::Version, null: false, description: "The version of Animal Crossing New Horizons in which this item first appeared."
   field :internal_id, Integer, null: false, description: "A unique identifier for this item that is internal to the game.", method: :shared_internal_id

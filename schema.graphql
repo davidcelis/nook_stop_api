@@ -176,6 +176,11 @@ type Accessory implements Clothing & HHAItem & Item & Node {
   styles: [String!]!
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -376,6 +381,11 @@ type Artwork implements HHAItem & Item & Node & PlaceableItem {
   title: String!
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -564,6 +574,11 @@ type Bag implements Clothing & HHAItem & Item & Node {
   styles: [String!]!
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -741,6 +756,11 @@ type Bottom implements Clothing & HHAItem & Item & Node {
   styles: [String!]!
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -916,6 +936,11 @@ type CeilingDecor implements CustomizableItem & HHAItem & Item & Node & Placeabl
   The type of speaker that this item can act as when placed.
   """
   speakerType: SpeakerType
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The width of this item when placed, in grid blocks.
@@ -1293,6 +1318,11 @@ type DressUp implements Clothing & HHAItem & Item & Node {
   styles: [String!]!
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -1431,6 +1461,11 @@ type Fencing implements CustomizableItem & Item & Node {
   The number of times this item can be stacked onto a single slot in the player's inventory.
   """
   stackSize: Int!
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 }
 
 """
@@ -1536,6 +1571,11 @@ type Flooring implements HHAItem & Item & Node {
   A list of sources for acquiring this item.
   """
   sources: [String!]!
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The kind of animated visual effects this flooring has.
@@ -1687,6 +1727,11 @@ type Fossil implements HHAItem & Item & Node & PlaceableItem {
   The type of speaker that this item can act as when placed.
   """
   speakerType: SpeakerType
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The width of this item when placed, in grid blocks.
@@ -1870,6 +1915,11 @@ type Gyroid implements CustomizableItem & HHAItem & Item & Node & PlaceableItem 
   The type of speaker that this item can act as when placed.
   """
   speakerType: SpeakerType
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The width of this item when placed, in grid blocks.
@@ -2260,6 +2310,11 @@ type HandheldItem implements CustomizableItem & HHAItem & Item & Node & Placeabl
   stackSize: Int!
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -2441,6 +2496,11 @@ type Headwear implements Clothing & HHAItem & Item & Node {
   The fashion styles associated with this item.
   """
   styles: [String!]!
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The width of this item when placed, in grid blocks.
@@ -2685,6 +2745,11 @@ type Houseware implements CustomizableItem & HHAItem & Item & Node & PlaceableIt
   speakerType: SpeakerType
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -2881,6 +2946,11 @@ type InteriorStructure implements CustomizableItem & HHAItem & Item & Node & Pla
   speakerType: SpeakerType
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -2960,6 +3030,58 @@ interface Item {
   A list of sources for acquiring this item.
   """
   sources: [String!]!
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+}
+
+"""
+Variants are specific versions of Items. Every Item has at least one "variant", but many have multiple variants.
+"""
+type ItemVariant implements Node {
+  """
+  The name of this variant's body. Can be used with the `bodyType` of its `item`
+  to construct a more complete name for this variant.
+  """
+  bodyName: String
+
+  """
+  The main colors of this variant.
+  """
+  colors: [String!]!
+
+  """
+  Only set for variants of Artwork and is used to distinguish between Artwork's genuine and fake variants.
+  """
+  genuine: Boolean
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  A URL that points to an image of this variant.
+  """
+  imageUrl: URL
+
+  """
+  A unique identifier for this variant that is internal to the game.
+  """
+  internalId: String!
+
+  """
+  The Item of which this object is a variant.
+  """
+  item: Item!
+
+  """
+  The name of this variant's pattern. Can be used with the `patternType` of its
+  `item` to construct a more complete name for this variant.
+  """
+  patternName: String
 }
 
 """
@@ -3156,6 +3278,11 @@ type MiscellaneousFurniture implements CustomizableItem & HHAItem & Item & Node 
   stackSize: Int!
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -3290,6 +3417,11 @@ type Music implements HHAItem & Item & Node & PlaceableItem {
   The type of speaker that this item can act as when placed.
   """
   speakerType: SpeakerType
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The width of this item when placed, in grid blocks.
@@ -3447,6 +3579,11 @@ type OtherItem implements HHAItem & Item & Node & PlaceableItem {
   The type of speaker that this item can act as when placed.
   """
   speakerType: SpeakerType
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The width of this item when placed, in grid blocks.
@@ -3683,6 +3820,11 @@ type Rug implements HHAItem & Item & Node & PlaceableItem {
   speakerType: SpeakerType
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -3877,6 +4019,11 @@ type Shoes implements Clothing & HHAItem & Item & Node {
   styles: [String!]!
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -4052,6 +4199,11 @@ type Socks implements Clothing & HHAItem & Item & Node {
   The fashion styles associated with this item.
   """
   styles: [String!]!
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The width of this item when placed, in grid blocks.
@@ -4261,10 +4413,20 @@ type Top implements Clothing & HHAItem & Item & Node {
   styles: [String!]!
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
 }
+
+"""
+A valid, formatted URL
+"""
+scalar URL
 
 """
 Umbrellas can be held by players or villagers. Villagers will typically only hold them when raining.
@@ -4436,6 +4598,11 @@ type Umbrella implements Clothing & HHAItem & Item & Node {
   The fashion styles associated with this item.
   """
   styles: [String!]!
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The width of this item when placed, in grid blocks.
@@ -4615,6 +4782,11 @@ type VillagerPhoto implements CustomizableItem & HHAItem & Item & Node & Placeab
   speakerType: SpeakerType
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -4748,6 +4920,11 @@ type VillagerPoster implements HHAItem & Item & Node & PlaceableItem {
   The type of speaker that this item can act as when placed.
   """
   speakerType: SpeakerType
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The width of this item when placed, in grid blocks.
@@ -4942,6 +5119,11 @@ type WallMountedFurniture implements CustomizableItem & HHAItem & Item & Node & 
   speakerType: SpeakerType
 
   """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
+
+  """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
@@ -5065,6 +5247,11 @@ type Wallpaper implements HHAItem & Item & Node {
   A list of sources for acquiring this item.
   """
   sources: [String!]!
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The kind of animated visual effects this wallpaper has.
@@ -5259,6 +5446,11 @@ type Wetsuit implements Clothing & HHAItem & Item & Node {
   The fashion styles associated with this item.
   """
   styles: [String!]!
+
+  """
+  A list of one or more unique variants of this item.
+  """
+  variants: [ItemVariant!]!
 
   """
   The width of this item when placed, in grid blocks.
