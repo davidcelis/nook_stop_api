@@ -31,7 +31,7 @@ class SeaCreatureSerializer < Blueprinter::Base
     :colors,
     :lighting_type,
 
-    # Happy Home Association attributes
+    # Happy Home Academy attributes
     :hha_base_points,
     :hha_category,
 

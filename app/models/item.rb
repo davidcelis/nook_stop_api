@@ -9,12 +9,9 @@ class Item < ApplicationRecord
     category.in?["Miscellaneous", "Photos"]
   end
 
-  # For almost every kind of item, all of its variants share the same concepts
-  # for Happy Home Association jobs. Artwork, however, is special. Fake art is
-  # always considered to be a part of the "horror" concept and nothing else.
-  def hha_concepts
-    super unless category == "Artwork" && !genuine?
+  def sources
+    return ["Assessing fossils"] if category == "Fossils"
 
-    ["horror"]
+    super
   end
 end

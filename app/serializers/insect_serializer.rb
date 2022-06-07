@@ -29,7 +29,7 @@ class InsectSerializer < Blueprinter::Base
     :is_a_surface,
     :colors,
 
-    # Happy Home Association attributes
+    # Happy Home Academy attributes
     :hha_base_points,
     :hha_category,
 

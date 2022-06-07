@@ -37,7 +37,7 @@ class CreateItemsAndVariants < ActiveRecord::Migration[7.0]
       t.boolean :is_a_surface, null: false
       t.string :interactivity
 
-      # Attributes related to the Happy Home Association
+      # Attributes related to the Happy Home Academy
       t.integer :hha_base_points
       t.string :hha_category
       t.string :hha_concepts, array: true, null: false, default: []
@@ -71,6 +71,7 @@ class CreateItemsAndVariants < ActiveRecord::Migration[7.0]
       t.string :fashion_season_availability
       t.string :mannequin_season
       t.string :dress_up_shape
+      t.boolean :can_be_equipped_by_villagers
       t.string :gender_presentation_for_villagers
       t.string :hat_or_accessory_type
       t.string :label_themes, array: true, null: false, default: []

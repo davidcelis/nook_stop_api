@@ -1,0 +1,5286 @@
+"""
+Accessories can be equipped on one's head or face. Depending on the shape, some
+can be worn by both the player and villagers while others can only be worn by players.
+"""
+type Accessory implements Clothing & HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be worn by villagers
+  """
+  canBeWornByVillagers: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The season during which this item is available to be purchased from the Able
+  Sisters. If `null`, the item can be purchased from them year-round.
+  """
+  fashionSeasonAvailability: Season
+
+  """
+  The season during which this item is considered fashionable. If `null`, the
+  item is considered to be fashionable year-round.
+  """
+  fashionableForSeason: Season
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The gender presentation typically associated with this item when worn by the player.
+  """
+  genderPresentation: GenderPresentation
+
+  """
+  The gender presentation typically associated with this item when worn by villagers.
+  """
+  genderPresentationForVillagers: GenderPresentation
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  Label's fashion themes for which this item fits.
+  """
+  labelThemes: [String!]!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The season or seasons during which this item will appear on mannequins in the Apparel Shop.
+  """
+  mannequinSeason: [Season!]!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  The shape of this accessory.
+  """
+  shape: AccessoryShape!
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The fashion styles associated with this item.
+  """
+  styles: [String!]!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+An identifier used to determine how an accessory looks when worn.
+"""
+enum AccessoryShape {
+  """
+  Covers the eyes.
+  """
+  EYE
+
+  """
+  Covers the eyes and mouth.
+  """
+  EYE_MOUTH
+
+  """
+  Covers the eyes, mouth, and nose.
+  """
+  EYE_MOUTH_INVISIBLE_NOSE
+
+  """
+  Covers the mouth.
+  """
+  MOUTH
+
+  """
+  Covers the mouth, ears, and jawline.
+  """
+  MOUTH_EAR_JAW
+
+  """
+  Covers the mouth and nose.
+  """
+  MOUTH_INVISIBLE_NOSE
+
+  """
+  Covers one eye.
+  """
+  ONE_EYE
+}
+
+"""
+Artwork is purchased by Redd and assessed as genuine or fake by Blathers in the Museum.
+"""
+type Artwork implements HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  The artwork's physical category.
+  """
+  category: ArtworkCategory!
+
+  """
+  A detailed description of the artwork.
+  """
+  description: String!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The artwork's item category when placed as furniture.
+  """
+  furnitureCategory: ArtworkFurnitureCategory!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The artwork's label, including its creator, year, and medium.
+  """
+  label: String!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The real-world name of this artwork.
+  """
+  title: String!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+enum ArtworkCategory {
+  PICTURE
+  SCULPTURE
+}
+
+enum ArtworkFurnitureCategory {
+  HOUSEWARES
+  MISCELLANEOUS
+  WALL_MOUNTED
+}
+
+"""
+Bags can be worn or held by players.
+"""
+type Bag implements Clothing & HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be worn by villagers
+  """
+  canBeWornByVillagers: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The season during which this item is available to be purchased from the Able
+  Sisters. If `null`, the item can be purchased from them year-round.
+  """
+  fashionSeasonAvailability: Season
+
+  """
+  The season during which this item is considered fashionable. If `null`, the
+  item is considered to be fashionable year-round.
+  """
+  fashionableForSeason: Season
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The gender presentation typically associated with this item when worn by the player.
+  """
+  genderPresentation: GenderPresentation
+
+  """
+  The gender presentation typically associated with this item when worn by villagers.
+  """
+  genderPresentationForVillagers: GenderPresentation
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  Label's fashion themes for which this item fits.
+  """
+  labelThemes: [String!]!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The season or seasons during which this item will appear on mannequins in the Apparel Shop.
+  """
+  mannequinSeason: [Season!]!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The fashion styles associated with this item.
+  """
+  styles: [String!]!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Bottoms are items that cover one's legs and can only be worn by players.
+"""
+type Bottom implements Clothing & HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be worn by villagers
+  """
+  canBeWornByVillagers: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The season during which this item is available to be purchased from the Able
+  Sisters. If `null`, the item can be purchased from them year-round.
+  """
+  fashionSeasonAvailability: Season
+
+  """
+  The season during which this item is considered fashionable. If `null`, the
+  item is considered to be fashionable year-round.
+  """
+  fashionableForSeason: Season
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The gender presentation typically associated with this item when worn by the player.
+  """
+  genderPresentation: GenderPresentation
+
+  """
+  The gender presentation typically associated with this item when worn by villagers.
+  """
+  genderPresentationForVillagers: GenderPresentation
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  Label's fashion themes for which this item fits.
+  """
+  labelThemes: [String!]!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The season or seasons during which this item will appear on mannequins in the Apparel Shop.
+  """
+  mannequinSeason: [Season!]!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The fashion styles associated with this item.
+  """
+  styles: [String!]!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Ceiling Decor are pieces of furniture that can be hung from the ceiling.
+"""
+type CeilingDecor implements CustomizableItem & HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item's body is customizable using customization kits. If
+  false, refer to the `cyrusCustomizationPrice` field to determine if this
+  item's body is customizable at all.
+  """
+  bodyCustomizable: Boolean!
+
+  """
+  A descriptor for this item's body.
+  """
+  bodyType: String
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  A shared category of which this item is a member.
+  """
+  category: String!
+
+  """
+  The number of customization kits that must be used to customize this item.
+  """
+  customizationKitCost: Int
+
+  """
+  The type of customization kit used to customize this item.
+  """
+  customizationKitType: CustomizationKitType
+
+  """
+  The cost for Cyrus to customize this item, in Bells.
+  """
+  cyrusCustomizationPrice: Int
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  A list of methods with which this item's pattern can be customized.
+  """
+  patternCustomizationOptions: [PatternCustomizationOption!]!
+
+  """
+  A descriptor for this item's pattern.
+  """
+  patternType: String
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Ceiling types that can come with certain wallpaper.
+"""
+enum CeilingType {
+  CLOTH
+  GOLD
+  PLAIN
+  STONE
+  TILE
+  WOOD
+}
+
+"""
+An item that can be worn by players and, sometimes, villagers. Clothing items
+may also be placed and displayed as furniture or on mannequins.
+"""
+interface Clothing {
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be worn by villagers
+  """
+  canBeWornByVillagers: Boolean!
+
+  """
+  The season during which this item is available to be purchased from the Able
+  Sisters. If `null`, the item can be purchased from them year-round.
+  """
+  fashionSeasonAvailability: Season
+
+  """
+  The season during which this item is considered fashionable. If `null`, the
+  item is considered to be fashionable year-round.
+  """
+  fashionableForSeason: Season
+
+  """
+  The gender presentation typically associated with this item when worn by the player.
+  """
+  genderPresentation: GenderPresentation
+
+  """
+  The gender presentation typically associated with this item when worn by villagers.
+  """
+  genderPresentationForVillagers: GenderPresentation
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  Label's fashion themes for which this item fits.
+  """
+  labelThemes: [String!]!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  The season or seasons during which this item will appear on mannequins in the Apparel Shop.
+  """
+  mannequinSeason: [Season!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The fashion styles associated with this item.
+  """
+  styles: [String!]!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+enum Currency {
+  """
+  The primary currency of Animal Crossing.
+  """
+  BELLS
+
+  """
+  A currency obtained from Reese during Wedding Season, which is used
+  exclusively to buy Wedding Series furniture from Cyrus.
+  """
+  HEART_CRYSTALS
+
+  """
+  Offered by Tom Nook via a rewards program, awarded by completing challenges that appear in the Nook Miles app.
+  """
+  NOOK_MILES
+
+  """
+  Awarded daily via NookLink at a rate of 10, 20, 30, or 50.
+  """
+  NOOK_POINTS
+
+  """
+  A currency used exclusively in the Happy Home Paradise archipelago.
+  """
+  POKI
+}
+
+"""
+Curtain types that can come with certain wallpaper.
+"""
+enum CurtainType {
+  CURTAINS
+  ROLLER_SHADES
+  SLATTED_BLINDS
+}
+
+"""
+An item that can be customized by using customization kits or by paying Cyrus.
+"""
+interface CustomizableItem {
+  """
+  Whether or not this item's body is customizable using customization kits. If
+  false, refer to the `cyrusCustomizationPrice` field to determine if this
+  item's body is customizable at all.
+  """
+  bodyCustomizable: Boolean!
+
+  """
+  A descriptor for this item's body.
+  """
+  bodyType: String
+
+  """
+  The number of customization kits that must be used to customize this item.
+  """
+  customizationKitCost: Int
+
+  """
+  The type of customization kit used to customize this item.
+  """
+  customizationKitType: CustomizationKitType
+
+  """
+  The cost for Cyrus to customize this item, in Bells.
+  """
+  cyrusCustomizationPrice: Int
+
+  """
+  A list of methods with which this item's pattern can be customized.
+  """
+  patternCustomizationOptions: [PatternCustomizationOption!]!
+
+  """
+  A descriptor for this item's pattern.
+  """
+  patternType: String
+}
+
+enum CustomizationKitType {
+  """
+  Can be customized using normal customization kits.
+  """
+  NORMAL
+
+  """
+  Can be customized using orange pumpkins grown in the Fall.
+  """
+  PUMPKIN
+
+  """
+  Can be customized using rainbow feathers acquired during Festivale.
+  """
+  RAINBOW_FEATHER
+}
+
+"""
+Dress-Up clothes are items that cover one's legs and torso. Depending on the
+shape, some can be worn by both the player and villagers while others can only
+be worn by players.
+"""
+type DressUp implements Clothing & HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be worn by villagers
+  """
+  canBeWornByVillagers: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The season during which this item is available to be purchased from the Able
+  Sisters. If `null`, the item can be purchased from them year-round.
+  """
+  fashionSeasonAvailability: Season
+
+  """
+  The season during which this item is considered fashionable. If `null`, the
+  item is considered to be fashionable year-round.
+  """
+  fashionableForSeason: Season
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The gender presentation typically associated with this item when worn by the player.
+  """
+  genderPresentation: GenderPresentation
+
+  """
+  The gender presentation typically associated with this item when worn by villagers.
+  """
+  genderPresentationForVillagers: GenderPresentation
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  Label's fashion themes for which this item fits.
+  """
+  labelThemes: [String!]!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The season or seasons during which this item will appear on mannequins in the Apparel Shop.
+  """
+  mannequinSeason: [Season!]!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  The shape of this dress-up item.
+  """
+  shape: DressUpShape!
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The fashion styles associated with this item.
+  """
+  styles: [String!]!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+An identifier used to determine how a Dress-Up item looks when worn.
+"""
+enum DressUpShape {
+  A_LINE
+  A_LONG
+  BALLOON
+  BOX
+  B_LONG
+  DRESS
+  KIMONO
+  MARINE_SUIT
+  OVERALLS
+  RIB
+  ROBE
+  SALOPETTE
+}
+
+"""
+Fencing is a special item that can be placed outdoors and provide structure to an island.
+"""
+type Fencing implements CustomizableItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item's body is customizable using customization kits. If
+  false, refer to the `cyrusCustomizationPrice` field to determine if this
+  item's body is customizable at all.
+  """
+  bodyCustomizable: Boolean!
+
+  """
+  A descriptor for this item's body.
+  """
+  bodyType: String
+
+  """
+  The number of customization kits that must be used to customize this item.
+  """
+  customizationKitCost: Int
+
+  """
+  The type of customization kit used to customize this item.
+  """
+  customizationKitType: CustomizationKitType
+
+  """
+  The cost for Cyrus to customize this item, in Bells.
+  """
+  cyrusCustomizationPrice: Int
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  A list of methods with which this item's pattern can be customized.
+  """
+  patternCustomizationOptions: [PatternCustomizationOption!]!
+
+  """
+  A descriptor for this item's pattern.
+  """
+  patternType: String
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The number of times this item can be stacked onto a single slot in the player's inventory.
+  """
+  stackSize: Int!
+}
+
+"""
+Flooring can be used to customize the appearance of a room's floors.
+"""
+type Flooring implements HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  A shared category of which this item is a member.
+  """
+  category: String!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The kind of animated visual effects this flooring has.
+  """
+  visualEffects: VisualEffects
+}
+
+"""
+Fossil pieces are acquired by digging and assessed/identified by Blathers in the
+Museum. Some fossils are composed of multiple pieces and must be assembled.
+"""
+type Fossil implements HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  A description of the fossil, courtesy of Blathers.
+  """
+  description: String!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The group to which this fossil belongs.
+  """
+  group: String!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The room in which this fossil is placed in the Museum.
+  """
+  museumRoom: Int!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+enum GenderPresentation {
+  FEMININE
+  MASCULINE
+  NONBINARY
+}
+
+"""
+Gyroids are acquired by digging and play sounds when interacted with.
+"""
+type Gyroid implements CustomizableItem & HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item's body is customizable using customization kits. If
+  false, refer to the `cyrusCustomizationPrice` field to determine if this
+  item's body is customizable at all.
+  """
+  bodyCustomizable: Boolean!
+
+  """
+  A descriptor for this item's body.
+  """
+  bodyType: String
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  The number of customization kits that must be used to customize this item.
+  """
+  customizationKitCost: Int
+
+  """
+  The type of customization kit used to customize this item.
+  """
+  customizationKitType: CustomizationKitType
+
+  """
+  The cost for Cyrus to customize this item, in Bells.
+  """
+  cyrusCustomizationPrice: Int
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  A list of methods with which this item's pattern can be customized.
+  """
+  patternCustomizationOptions: [PatternCustomizationOption!]!
+
+  """
+  A descriptor for this item's pattern.
+  """
+  patternType: String
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  The type of sound played by this Gyroid when interacted with.
+  """
+  soundType: GyroidSoundType!
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+The types of sound that can be played by a Gyroid when interacted with.
+"""
+enum GyroidSoundType {
+  CRASH
+  DRUM_SET
+  HI_HAT
+  KICK
+  MELODY
+  SNARE
+}
+
+"""
+Shared categories of items, as determined by the Happy Home Academy.
+"""
+enum HHACategory {
+  AC
+  APPLIANCE
+  AUDIO
+  CLOCK
+  DOLL
+  DRESSER
+  FOOD
+  KITCHEN
+  LIGHTING
+  MUSICAL_INSTRUMENT
+  PET
+  PLANT
+  SMALL_GOODS
+  TRASH
+  TV
+}
+
+"""
+The Happy Home Academy "concepts" to which items can belong.
+"""
+enum HHAConcept {
+  AMUSEMENT_PARK
+  ANCIENT
+  APPAREL_SHOP
+  ARCADE
+  BATHROOM
+  CAFE
+  CHILDS_ROOM
+  CITY_LIFE
+  CONCERT
+  CONSTRUCTION_SITE
+  DEN
+  EUROPEAN
+  EXPENSIVE
+  FACILITY
+  FANCY
+  FANTASY
+  FITNESS
+  FREEZING_COLD
+  GARDEN
+  HARMONIOUS
+  HERITAGE
+  HORROR
+  HOSPITAL
+  KITCHEN
+  LAB
+  LIVING_ROOM
+  LOCAL
+  MUSIC
+  NATURE
+  OCEAN
+  OFFICE
+  OUTDOORS
+  PARK
+  PARTY
+  PUBLIC_BATH
+  RESORT
+  RESTAURANT
+  RETRO
+  SCHOOL
+  SCIENCE_FICTION
+  SHOP
+  SPACE
+  SPORTS
+  STYLISH
+  SUPERMARKET
+  WORKSHOP
+}
+
+"""
+An item that can be scored by the Happy Home Academy.
+"""
+interface HHAItem {
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+}
+
+"""
+The Happy Home Academy "series" in which items can belong.
+"""
+enum HHASeries {
+  ANTIQUE
+  BAMBOO
+  BUNNY_DAY
+  CARDBOARD
+  CHERRY_BLOSSOMS
+  CINNAMON_ROLL
+  COOL
+  CUTE
+  DINER
+  DREAMY
+  ELEGANT
+  FESTIVALE
+  FESTIVE
+  FLOWERS
+  FROZEN
+  FRUITS
+  GOLDEN
+  HELLO_KITTY
+  IMPERIAL
+  IRON
+  IRONWOOD
+  KEROKEROKEROPPI
+  KIKI_AND_LALA
+  LOG
+  MARIO
+  MERMAID
+  MOROCCAN
+  MOTHERLY
+  MUSH
+  MY_MELODY
+  NORDIC
+  PATCHWORK
+  PIRATE
+  PLAZA
+  POMPOMPURIN
+  RANCH
+  RATTAN
+  SHELL
+  SIMPLE
+  SLOPPY
+  SPOOKY
+  STARS
+  THROWBACK
+  TREES_BOUNTY_OR_LEAVES
+  TURKEY_DAY
+  VINTAGE
+  WEDDING
+  WOODEN
+  WOODEN_BLOCK
+}
+
+"""
+The Happy Home Academy "furniture sets" in which items can belong.
+"""
+enum HHASet {
+  APPLE
+  ARTSY
+  BEAR
+  BIRTHDAY
+  BUG_HEAD
+  CASTLE
+  CHALKBOARD
+  CHERRY
+  DEN
+  GAMING
+  GARDEN
+  IMPERIAL_DINING
+  IRON_GARDEN
+  KITCHEN
+  LECTURE_HALL
+  METAL_AND_WOOD
+  NATURAL
+  OFFICE
+  ORANGE
+  PANDA
+  PEACH
+  PEAR
+  PET
+  RUINED
+  SCHOOL
+  SPORTS_RING
+  STANDEE
+  STONE
+  STUDY
+}
+
+"""
+Handheld Items are items that can be held by the player or villagers, such as tools, wands, or beverages.
+"""
+type HandheldItem implements CustomizableItem & HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item's body is customizable using customization kits. If
+  false, refer to the `cyrusCustomizationPrice` field to determine if this
+  item's body is customizable at all.
+  """
+  bodyCustomizable: Boolean!
+
+  """
+  A descriptor for this item's body.
+  """
+  bodyType: String
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  The number of customization kits that must be used to customize this item.
+  """
+  customizationKitCost: Int
+
+  """
+  The type of customization kit used to customize this item.
+  """
+  customizationKitType: CustomizationKitType
+
+  """
+  The cost for Cyrus to customize this item, in Bells.
+  """
+  cyrusCustomizationPrice: Int
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The number of times this item can be used before breaking or being consumed.
+  If `null`, the item can be used indefinitely without breaking or being consumed.
+  """
+  numberOfUses: Float
+
+  """
+  A list of methods with which this item's pattern can be customized.
+  """
+  patternCustomizationOptions: [PatternCustomizationOption!]!
+
+  """
+  A descriptor for this item's pattern.
+  """
+  patternType: String
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The number of times this item can be stacked onto a single slot in the player's inventory.
+  """
+  stackSize: Int!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Headwear items can be equipped on one's head. Depending on the shape, some can
+be worn by both the player and villagers while others can only be worn by players.
+"""
+type Headwear implements Clothing & HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be worn by villagers
+  """
+  canBeWornByVillagers: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The season during which this item is available to be purchased from the Able
+  Sisters. If `null`, the item can be purchased from them year-round.
+  """
+  fashionSeasonAvailability: Season
+
+  """
+  The season during which this item is considered fashionable. If `null`, the
+  item is considered to be fashionable year-round.
+  """
+  fashionableForSeason: Season
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The gender presentation typically associated with this item when worn by the player.
+  """
+  genderPresentation: GenderPresentation
+
+  """
+  The gender presentation typically associated with this item when worn by villagers.
+  """
+  genderPresentationForVillagers: GenderPresentation
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  Label's fashion themes for which this item fits.
+  """
+  labelThemes: [String!]!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The season or seasons during which this item will appear on mannequins in the Apparel Shop.
+  """
+  mannequinSeason: [Season!]!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  The shape of this headwear.
+  """
+  shape: HeadwearShape!
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The fashion styles associated with this item.
+  """
+  styles: [String!]!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+An identifier used to determine how headwear looks when worn.
+"""
+enum HeadwearShape {
+  """
+  Looks like a cap.
+  """
+  CAP
+
+  """
+  Partially covers the face.
+  """
+  FACE
+
+  """
+  Completely covers the face.
+  """
+  FULL_FACE
+
+  """
+  Is a hair ornament worn in back.
+  """
+  HAIR_ORNAMENT_BACK
+
+  """
+  Is a hair ornament worn in front.
+  """
+  HAIR_ORNAMENT_FRONT
+
+  """
+  Is a hair ornament worn on the left side.
+  """
+  HAIR_ORNAMENT_LEFT
+
+  """
+  Is a hair ornament worn on the peak of the head.
+  """
+  HAIR_ORNAMENT_PEAK
+
+  """
+  Is a hair ornament worn on the top of the head.
+  """
+  HAIR_ORNAMENT_TOP
+
+  """
+  Mostly encloses the head, but shows the player's bangs.
+  """
+  HEADGEAR_BANGS
+
+  """
+  Mostly encloses the head, but shows the player's ears.
+  """
+  HEADGEAR_EARS
+
+  """
+  Encloses the head and hides the player's ears.
+  """
+  HEADGEAR_NO_EARS
+
+  """
+  Encloses the head and hides the player's ears and jawline.
+  """
+  HEADGEAR_NO_EARS_NO_JAW
+}
+
+"""
+Houseware is a type of general-purpose furniture item in Animal Crossing.
+"""
+type Houseware implements CustomizableItem & HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item's body is customizable using customization kits. If
+  false, refer to the `cyrusCustomizationPrice` field to determine if this
+  item's body is customizable at all.
+  """
+  bodyCustomizable: Boolean!
+
+  """
+  A descriptor for this item's body.
+  """
+  bodyType: String
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  A shared category of which this item is a member.
+  """
+  category: String!
+
+  """
+  The number of customization kits that must be used to customize this item.
+  """
+  customizationKitCost: Int
+
+  """
+  The type of customization kit used to customize this item.
+  """
+  customizationKitType: CustomizationKitType
+
+  """
+  The cost for Cyrus to customize this item, in Bells.
+  """
+  cyrusCustomizationPrice: Int
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  A list of methods with which this item's pattern can be customized.
+  """
+  patternCustomizationOptions: [PatternCustomizationOption!]!
+
+  """
+  A descriptor for this item's pattern.
+  """
+  patternType: String
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+The kind of interactivity offered by certain items.
+"""
+enum Interaction {
+  BED
+  CHAIR
+  KITCHENWARE
+  MIRROR
+  MUSICAL_INSTRUMENT
+  MUSIC_PLAYER
+  OTHER
+  STORAGE
+  TOILET
+  TRASH
+  TV
+  WARDROBE
+  WORKBENCH
+}
+
+"""
+Interior Structures are items that can be placed inside a home to give it structure.
+"""
+type InteriorStructure implements CustomizableItem & HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item's body is customizable using customization kits. If
+  false, refer to the `cyrusCustomizationPrice` field to determine if this
+  item's body is customizable at all.
+  """
+  bodyCustomizable: Boolean!
+
+  """
+  A descriptor for this item's body.
+  """
+  bodyType: String
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  A shared category of which this item is a member.
+  """
+  category: InteriorStructureType!
+
+  """
+  The number of customization kits that must be used to customize this item.
+  """
+  customizationKitCost: Int
+
+  """
+  The type of customization kit used to customize this item.
+  """
+  customizationKitType: CustomizationKitType
+
+  """
+  The cost for Cyrus to customize this item, in Bells.
+  """
+  cyrusCustomizationPrice: Int
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  A list of methods with which this item's pattern can be customized.
+  """
+  patternCustomizationOptions: [PatternCustomizationOption!]!
+
+  """
+  A descriptor for this item's pattern.
+  """
+  patternType: String
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+enum InteriorStructureType {
+  COUNTER
+  PARTITION
+  PILLAR
+}
+
+"""
+Something in Animal Crossing that is considered an item.
+"""
+interface Item {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+}
+
+"""
+Kinds and qualities of light that can be emitted by certain items.
+"""
+enum LightingType {
+  CANDLE
+  EMISSION
+  FLUORESCENT
+  MONITOR
+  SHADE
+  SPOTLIGHT
+}
+
+"""
+Miscellaneous furniture items are distinguished from Housewares by the ability to place them on tables or other surfaces.
+"""
+type MiscellaneousFurniture implements CustomizableItem & HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item's body is customizable using customization kits. If
+  false, refer to the `cyrusCustomizationPrice` field to determine if this
+  item's body is customizable at all.
+  """
+  bodyCustomizable: Boolean!
+
+  """
+  A descriptor for this item's body.
+  """
+  bodyType: String
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  A shared category of which this item is a member.
+  """
+  category: String!
+
+  """
+  The number of customization kits that must be used to customize this item.
+  """
+  customizationKitCost: Int
+
+  """
+  The type of customization kit used to customize this item.
+  """
+  customizationKitType: CustomizationKitType
+
+  """
+  The cost for Cyrus to customize this item, in Bells.
+  """
+  cyrusCustomizationPrice: Int
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The amount of power gained by eating this item if it is edible.
+  """
+  foodPower: Int
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  A list of methods with which this item's pattern can be customized.
+  """
+  patternCustomizationOptions: [PatternCustomizationOption!]!
+
+  """
+  A descriptor for this item's pattern.
+  """
+  patternType: String
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The number of times this item can be stacked onto a single slot in the player's inventory.
+  """
+  stackSize: Int!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Music albums can be registered and played by interacting with a speaker. They
+can also be placed on a surface or the ground to be displayed in a frame.
+"""
+type Music implements HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+type Mutation
+
+"""
+An object with an ID.
+"""
+interface Node {
+  """
+  ID of the object.
+  """
+  id: ID!
+}
+
+"""
+Other Items are items which do not neatly fit into any other Item type.
+"""
+type OtherItem implements HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  A shared category of which this item is a member.
+  """
+  category: String!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The amount of power gained by eating this item if it is edible.
+  """
+  foodPower: Int
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+enum PatternCustomizationOption {
+  """
+  Can be customized using patterns developed by the player.
+  """
+  CUSTOM
+
+  """
+  Can be customized using the item's default pattern options.
+  """
+  DEFAULT
+
+  """
+  Can be customized using patterns developed by Sable.
+  """
+  SABLE
+}
+
+"""
+An item that can be placed on the ground (or some other horizontal surface) and act as furniture or decor.
+"""
+interface PlaceableItem {
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+type Query {
+  """
+  Returns a single item by internal ID.
+  """
+  item(
+    """
+    The ID of the item used internally by Animal Crossing.
+    """
+    id: Int!
+  ): Item!
+
+  """
+  Fetches an object given its ID.
+  """
+  node(
+    """
+    ID of the object.
+    """
+    id: ID!
+  ): Node
+
+  """
+  Fetches a list of objects given a list of IDs.
+  """
+  nodes(
+    """
+    IDs of the objects.
+    """
+    ids: [ID!]!
+  ): [Node]!
+}
+
+"""
+Rugs come in a variety of sizes and can decorate a room's floor with or without furniture placed on top.
+"""
+type Rug implements HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  A shared category of which this item is a member.
+  """
+  category: String!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  The size of this rug as determined by Saharah.
+  """
+  size: RugSize!
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+The categories of rugs that are purchaseable from Saharah. She offers one rug from each category per visit.
+"""
+enum RugSize {
+  LARGE
+  MEDIUM
+  SMALL
+}
+
+enum Season {
+  FALL
+  SPRING
+  SUMMER
+  WINTER
+  YEAR_ROUND
+}
+
+"""
+Shoes can be equipped on the player's feet.
+"""
+type Shoes implements Clothing & HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be worn by villagers
+  """
+  canBeWornByVillagers: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The season during which this item is available to be purchased from the Able
+  Sisters. If `null`, the item can be purchased from them year-round.
+  """
+  fashionSeasonAvailability: Season
+
+  """
+  The season during which this item is considered fashionable. If `null`, the
+  item is considered to be fashionable year-round.
+  """
+  fashionableForSeason: Season
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The gender presentation typically associated with this item when worn by the player.
+  """
+  genderPresentation: GenderPresentation
+
+  """
+  The gender presentation typically associated with this item when worn by villagers.
+  """
+  genderPresentationForVillagers: GenderPresentation
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  Label's fashion themes for which this item fits.
+  """
+  labelThemes: [String!]!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The season or seasons during which this item will appear on mannequins in the Apparel Shop.
+  """
+  mannequinSeason: [Season!]!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The fashion styles associated with this item.
+  """
+  styles: [String!]!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Socks can be equipped on the player's feet.
+"""
+type Socks implements Clothing & HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be worn by villagers
+  """
+  canBeWornByVillagers: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The season during which this item is available to be purchased from the Able
+  Sisters. If `null`, the item can be purchased from them year-round.
+  """
+  fashionSeasonAvailability: Season
+
+  """
+  The season during which this item is considered fashionable. If `null`, the
+  item is considered to be fashionable year-round.
+  """
+  fashionableForSeason: Season
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The gender presentation typically associated with this item when worn by the player.
+  """
+  genderPresentation: GenderPresentation
+
+  """
+  The gender presentation typically associated with this item when worn by villagers.
+  """
+  genderPresentationForVillagers: GenderPresentation
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  Label's fashion themes for which this item fits.
+  """
+  labelThemes: [String!]!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The season or seasons during which this item will appear on mannequins in the Apparel Shop.
+  """
+  mannequinSeason: [Season!]!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The fashion styles associated with this item.
+  """
+  styles: [String!]!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+The quality of sound played by items that can act as music players.
+"""
+enum SpeakerType {
+  """
+  Cheap quality, which is a low quality, tinny sound.
+  """
+  CHEAP
+
+  """
+  Studio quality, the highest quality.
+  """
+  HI_FI
+
+  """
+  Plays a sound quality like a music box.
+  """
+  MUSIC_BOX
+
+  """
+  Plays like an old-school record player, with a muffled quality and added pitch wobble and static effects.
+  """
+  PHONO
+
+  """
+  "Retro" quality, which is slightly lower quality than `HI_FI`.
+  """
+  RETRO
+}
+
+"""
+Tops are items that cover one's torso and can be worn by players and villagers.
+"""
+type Top implements Clothing & HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be worn by villagers
+  """
+  canBeWornByVillagers: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The season during which this item is available to be purchased from the Able
+  Sisters. If `null`, the item can be purchased from them year-round.
+  """
+  fashionSeasonAvailability: Season
+
+  """
+  The season during which this item is considered fashionable. If `null`, the
+  item is considered to be fashionable year-round.
+  """
+  fashionableForSeason: Season
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The gender presentation typically associated with this item when worn by the player.
+  """
+  genderPresentation: GenderPresentation
+
+  """
+  The gender presentation typically associated with this item when worn by villagers.
+  """
+  genderPresentationForVillagers: GenderPresentation
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  Label's fashion themes for which this item fits.
+  """
+  labelThemes: [String!]!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The season or seasons during which this item will appear on mannequins in the Apparel Shop.
+  """
+  mannequinSeason: [Season!]!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The fashion styles associated with this item.
+  """
+  styles: [String!]!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Umbrellas can be held by players or villagers. Villagers will typically only hold them when raining.
+"""
+type Umbrella implements Clothing & HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be worn by villagers
+  """
+  canBeWornByVillagers: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The season during which this item is available to be purchased from the Able
+  Sisters. If `null`, the item can be purchased from them year-round.
+  """
+  fashionSeasonAvailability: Season
+
+  """
+  The season during which this item is considered fashionable. If `null`, the
+  item is considered to be fashionable year-round.
+  """
+  fashionableForSeason: Season
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The gender presentation typically associated with this item when worn by the player.
+  """
+  genderPresentation: GenderPresentation
+
+  """
+  The gender presentation typically associated with this item when worn by villagers.
+  """
+  genderPresentationForVillagers: GenderPresentation
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  Label's fashion themes for which this item fits.
+  """
+  labelThemes: [String!]!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The season or seasons during which this item will appear on mannequins in the Apparel Shop.
+  """
+  mannequinSeason: [Season!]!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The fashion styles associated with this item.
+  """
+  styles: [String!]!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+A semantic version string representing a version of Animal Crossing: New Horizons.
+"""
+scalar Version
+
+"""
+Photos are keepsakes that can be gifted by villagers after becoming good friends with them.
+"""
+type VillagerPhoto implements CustomizableItem & HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item's body is customizable using customization kits. If
+  false, refer to the `cyrusCustomizationPrice` field to determine if this
+  item's body is customizable at all.
+  """
+  bodyCustomizable: Boolean!
+
+  """
+  A descriptor for this item's body.
+  """
+  bodyType: String
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  The number of customization kits that must be used to customize this item.
+  """
+  customizationKitCost: Int
+
+  """
+  The type of customization kit used to customize this item.
+  """
+  customizationKitType: CustomizationKitType
+
+  """
+  The cost for Cyrus to customize this item, in Bells.
+  """
+  cyrusCustomizationPrice: Int
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  A list of methods with which this item's pattern can be customized.
+  """
+  patternCustomizationOptions: [PatternCustomizationOption!]!
+
+  """
+  A descriptor for this item's pattern.
+  """
+  patternType: String
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Photos are wall-mounted keepsakes that can be purchased after inviting villagers to Photopia.
+"""
+type VillagerPoster implements HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Types of visual effects that certain wallpaper and flooring have when used.
+"""
+enum VisualEffects {
+  LIGHTS_OFF
+  OTHER
+  RANDOM
+  SYNCHRONIZED
+}
+
+"""
+Miscellaneous furniture items are distinguished from Housewares by the ability to place them on tables or other surfaces.
+"""
+type WallMountedFurniture implements CustomizableItem & HHAItem & Item & Node & PlaceableItem {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item's body is customizable using customization kits. If
+  false, refer to the `cyrusCustomizationPrice` field to determine if this
+  item's body is customizable at all.
+  """
+  bodyCustomizable: Boolean!
+
+  """
+  A descriptor for this item's body.
+  """
+  bodyType: String
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be mounted on the front door of the player's house.
+  """
+  canDecorateDoor: Boolean!
+
+  """
+  A shared category of which this item is a member.
+  """
+  category: String!
+
+  """
+  The number of customization kits that must be used to customize this item.
+  """
+  customizationKitCost: Int
+
+  """
+  The type of customization kit used to customize this item.
+  """
+  customizationKitType: CustomizationKitType
+
+  """
+  The cost for Cyrus to customize this item, in Bells.
+  """
+  cyrusCustomizationPrice: Int
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  A list of methods with which this item's pattern can be customized.
+  """
+  patternCustomizationOptions: [PatternCustomizationOption!]!
+
+  """
+  A descriptor for this item's pattern.
+  """
+  patternType: String
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Wallpaper can be used to customize the appearance of a room's walls.
+"""
+type Wallpaper implements HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  A shared category of which this item is a member.
+  """
+  category: String!
+
+  """
+  The room's ceiling type when this wallpaper is applied.
+  """
+  ceilingType: CeilingType
+
+  """
+  The color of the curtains used by the room's windows when this wallpaper is applied.
+  """
+  curtainColor: String
+
+  """
+  The type of curtains used by the room's windows when this wallpaper is applied.
+  """
+  curtainType: CurtainType
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The kind of animated visual effects this wallpaper has.
+  """
+  visualEffects: VisualEffects
+
+  """
+  The color of the frames used by the room's windows when this wallpaper is applied.
+  """
+  windowColor: String
+
+  """
+  The type of pane used by the room's windows when this wallpaper is applied.
+  """
+  windowPaneType: WindowPaneType
+
+  """
+  The type of windows installed in the room when this wallpaper is applied.
+  """
+  windowType: WindowType
+}
+
+"""
+Wetsuits are items that cover one's legs and torso like Dress-Up items. Unlike
+Dress-Up items, however, they can only be worn by players and allow the player
+to dive into the sea and catch Sea Creatures.
+"""
+type Wetsuit implements Clothing & HHAItem & Item & Node {
+  """
+  The version of Animal Crossing New Horizons in which this item first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this item can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this item can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  Whether or not this item can be worn by villagers
+  """
+  canBeWornByVillagers: Boolean!
+
+  """
+  Whether or not this item can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  The season during which this item is available to be purchased from the Able
+  Sisters. If `null`, the item can be purchased from them year-round.
+  """
+  fashionSeasonAvailability: Season
+
+  """
+  The season during which this item is considered fashionable. If `null`, the
+  item is considered to be fashionable year-round.
+  """
+  fashionableForSeason: Season
+
+  """
+  Whether or not this item can be purchased in the in-game Nook Shopping catalog.
+  """
+  forSaleInCatalog: Boolean!
+
+  """
+  The gender presentation typically associated with this item when worn by the player.
+  """
+  genderPresentation: GenderPresentation
+
+  """
+  The gender presentation typically associated with this item when worn by villagers.
+  """
+  genderPresentationForVillagers: GenderPresentation
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this item.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this item is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A list of Happy Home Academy "concepts" to which this item belongs.
+  """
+  hhaConcepts: [HHAConcept!]!
+
+  """
+  The Happy Home Academy "series" in which this item belongs.
+  """
+  hhaSeries: HHASeries
+
+  """
+  The Happy Home Academy "furniture set" in which this item belongs.
+  """
+  hhaSet: HHASet
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The type of interaction that this item allows when placed.
+  """
+  interactivity: Interaction
+
+  """
+  A unique identifier for this item that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  Label's fashion themes for which this item fits.
+  """
+  labelThemes: [String!]!
+
+  """
+  The length of this item when placed, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  Whether or not this item appears in the in-game Nook Shopping catalog.
+  """
+  listedInCatalog: Boolean!
+
+  """
+  The season or seasons during which this item will appear on mannequins in the Apparel Shop.
+  """
+  mannequinSeason: [Season!]!
+
+  """
+  The name of this item.
+  """
+  name: String!
+
+  """
+  The price of this item in Bells. If not present, it means the item cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this item is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this item.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this item.
+  """
+  sources: [String!]!
+
+  """
+  The type of speaker that this item can act as when placed.
+  """
+  speakerType: SpeakerType
+
+  """
+  The fashion styles associated with this item.
+  """
+  styles: [String!]!
+
+  """
+  The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Window pane types that can come with certain wallpaper.
+"""
+enum WindowPaneType {
+  GLASS
+  SCREEN
+}
+
+"""
+Window types that can come with certain wallpaper.
+"""
+enum WindowType {
+  ARCH
+  CIRCULAR
+  FOUR_PANE
+  SINGLE_PANE
+  SLIDING_PANE
+}

@@ -113,6 +113,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_183841) do
     t.string "fashion_season_availability"
     t.string "mannequin_season"
     t.string "dress_up_shape"
+    t.boolean "can_be_equipped_by_villagers"
     t.string "gender_presentation_for_villagers"
     t.string "hat_or_accessory_type"
     t.string "label_themes", default: [], null: false, array: true

@@ -79,7 +79,7 @@ class ItemSerializer < Blueprinter::Base
   fields *[
     :gyroid_sound_type,
 
-    # Happy Home Association attributes
+    # Happy Home Academy attributes
     :hha_base_points,
     :hha_category,
     :hha_concepts,

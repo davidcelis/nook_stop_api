@@ -114,7 +114,7 @@ class ItemCreator
       "Other"
     end
 
-    # Attributes related to the Happy Home Association
+    # Attributes related to the Happy Home Academy
     item.hha_base_points = attributes["hhaBasePoints"]
     item.hha_category = attributes["hhaCategory"]
     item.hha_concepts = attributes.dig("variants", 0, "themes")
@@ -145,11 +145,12 @@ class ItemCreator
     # Clothing-specific attributes
     item.clothing_styles = [attributes["style1"], attributes["style2"]]
     item.gender_presentation = attributes["gender"]
-    item.fashionable_for_season = attributes["seasonality"]
-    item.fashion_season_availability = attributes["seasonalAvailability"]
+    item.fashionable_for_season = attributes["seasonality"] unless attributes["seasonality"]
+    item.fashion_season_availability = attributes["seasonalAvailability"] unless attributes["seasonalAvailability"]
     item.mannequin_season = attributes["mannequinSeason"]
     item.dress_up_shape = attributes["primaryShape"]
-    item.gender_presentation_for_villagers = attributes["villagerGender"] if attributes["villagerEquippable"]
+    item.can_be_equipped_by_villagers = attributes["villagerEquippable"]
+    item.gender_presentation_for_villagers = attributes["villagerGender"]
     item.hat_or_accessory_type = attributes["type"]
     item.label_themes = Array(attributes.dig("variants", 0, "labelThemes"))
 
@@ -177,7 +178,9 @@ class ItemCreator
       item.shared_internal_id = attributes.dig("variants", 0, "internalId")
     else
       attribute = SHEET_TO_SHARED_AND_UNIQUE_IDS[item.category][:shared] || SHEET_TO_SHARED_AND_UNIQUE_IDS[item.category][:unique]
-      item.shared_internal_id = attributes.dig("variants", 0, attribute)
+
+      item.shared_internal_id = attributes[attribute]
+      item.shared_internal_id ||= attributes.dig("variants", 0, attribute)
     end
 
     item.save!
