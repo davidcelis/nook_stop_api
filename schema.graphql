@@ -1291,6 +1291,11 @@ enum CustomizationKitType {
 }
 
 """
+Types which may be used by Villagers as their default furniture items
+"""
+union DefaultFurniture = Bottom | Fish | HandheldItem | Houseware | ItemVariant | MiscellaneousFurniture | Music | Rug | Top | VillagerPhoto | VillagerPoster | WallMountedFurniture
+
+"""
 Dress-Up clothes are items that cover one's legs and torso. Depending on the
 shape, some can be worn by both the player and villagers while others can only
 be worn by players.
@@ -5811,6 +5816,11 @@ type Villager implements Node {
   The flooring usually used by the villager to decorate their home.
   """
   defaultFlooring: Flooring!
+
+  """
+  The items usually displayed by this villager in their house as furniture.
+  """
+  defaultFurniture: [DefaultFurniture!]!
 
   """
   The kitchen equipment usually used by the villager when cooking.

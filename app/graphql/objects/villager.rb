@@ -64,7 +64,22 @@ class Objects::Villager < Objects::BaseObject
     variant = dataloader.with(Sources::ObjectByColumn, ::ItemVariant, :id).load(object.default_kitchen_equipment_id)
   end
 
+  field :default_furniture, [Unions::DefaultFurniture], null: false, description: "The items usually displayed by this villager in their house as furniture."
+  def default_furniture
+    defaults = dataloader.with(Sources::ObjectsByColumn, DefaultItem, :villager_id).load(object.id)
+    defaults = defaults.group_by(&:item_type)
 
+    # Thankfully, we know that the only defaults here are Item, ItemVariant, and Creature
+    default_item_ids = Array(defaults["Item"]).map(&:item_id)
+    default_item_variant_ids = Array(defaults["ItemVariant"]).map(&:item_id)
+    default_creature_ids = Array(defaults["Creature"]).map(&:item_id)
+
+    items = dataloader.with(Sources::ObjectByColumn, ::Item, :id).load_all(default_item_ids)
+    item_variants = dataloader.with(Sources::ObjectByColumn, ::ItemVariant, :id).load_all(default_item_variant_ids)
+    creatures = dataloader.with(Sources::ObjectByColumn, ::Creature, :id).load_all(default_creature_ids)
+
+    items + item_variants + creatures
+  end
 
   # Metadata
   field :added_in_version, Scalars::Version, null: false, description: "The version of Animal Crossing New Horizons in which this recipe first appeared."

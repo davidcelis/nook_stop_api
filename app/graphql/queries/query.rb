@@ -90,9 +90,7 @@ module Queries
     end
 
     field :villager, Objects::Villager, null: false, description: "Returns a single villager by name." do
-      argument :name, String, required: true, description: "The name of the villager. This argument is case sensitive.", prepare: ->(name, _) {
-        name.downcase
-      }
+      argument :name, String, required: true, description: "The name of the villager. This argument is case sensitive."
     end
     def villager(name:)
       dataloader.with(Sources::ObjectByColumn, Villager, :name).load(name)

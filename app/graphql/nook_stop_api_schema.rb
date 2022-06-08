@@ -11,12 +11,7 @@ class NookStopAPISchema < GraphQL::Schema
   orphan_types(
     # Items
     Objects::InteriorStructure,
-    Objects::Rug,
-    Objects::VillagerPhoto,
-    Objects::VillagerPoster,
     Objects::Fencing,
-    Objects::Top,
-    Objects::Bottom,
     Objects::Headwear,
     Objects::Accessory,
     Objects::Socks,
@@ -47,12 +42,20 @@ class NookStopAPISchema < GraphQL::Schema
     case obj
     when Item
       resolve_item_type(abstract_type, obj, ctx)
-    when Insect
-      Objects::Insect
+    when ItemVariant
+      Objects::ItemVariant
+    when Recipe
+      Objects::Recipe
+    when RecipeMaterial
+      Objects::RecipeMaterial
     when Fish
       Objects::Fish
+    when Insect
+      Objects::Insect
     when SeaCreature
       Objects::SeaCreature
+    when Villager
+      Objects::Villager
     end
   end
 

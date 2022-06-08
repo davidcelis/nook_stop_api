@@ -4517,6 +4517,77 @@
           ]
         },
         {
+          "kind": "UNION",
+          "name": "DefaultFurniture",
+          "description": "Types which may be used by Villagers as their default furniture items",
+          "interfaces": null,
+          "possibleTypes": [
+            {
+              "kind": "OBJECT",
+              "name": "Bottom",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Fish",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "HandheldItem",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Houseware",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "ItemVariant",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "MiscellaneousFurniture",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Music",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Rug",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Top",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "VillagerPhoto",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "VillagerPoster",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "WallMountedFurniture",
+              "ofType": null
+            }
+          ],
+          "fields": null,
+          "inputFields": null,
+          "enumValues": null
+        },
+        {
           "kind": "OBJECT",
           "name": "DressUp",
           "description": "Dress-Up clothes are items that cover one's legs and torso. Depending on the shape, some can be worn by both the player and villagers while others can only be worn by players.",
@@ -21128,6 +21199,32 @@
                   "kind": "OBJECT",
                   "name": "Flooring",
                   "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+
+              ]
+            },
+            {
+              "name": "defaultFurniture",
+              "description": "The items usually displayed by this villager in their house as furniture.",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "UNION",
+                      "name": "DefaultFurniture",
+                      "ofType": null
+                    }
+                  }
                 }
               },
               "isDeprecated": false,
