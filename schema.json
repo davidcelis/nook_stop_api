@@ -10944,6 +10944,24 @@
               ]
             },
             {
+              "name": "size",
+              "description": "The size of the item, formatted as lenth x width.",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": true,
+              "deprecationReason": "This field was added before a robust `Item` interface was extracted. You should prefer the `length` and `width` fields provided by that interface instead.",
+              "args": [
+
+              ]
+            },
+            {
               "name": "sourceNotes",
               "description": "Additional freeform notes on acquiring this item.",
               "type": {
