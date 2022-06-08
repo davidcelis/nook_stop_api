@@ -7,6 +7,7 @@ class NookStopAPISchema < GraphQL::Schema
 
   # Define types that aren't reachable via introspection
   orphan_types(
+    # Items
     Objects::Houseware,
     Objects::MiscellaneousFurniture,
     Objects::WallMountedFurniture,
@@ -33,7 +34,12 @@ class NookStopAPISchema < GraphQL::Schema
     Objects::Fossil,
     Objects::Artwork,
     Objects::Gyroid,
-    Objects::OtherItem
+    Objects::OtherItem,
+
+    # Creatures
+    Objects::Insect,
+    Objects::Fish,
+    Objects::SeaCreature
 )
 
   rescue_from(ActiveRecord::RecordNotFound) do |err, obj, args, ctx, field|
@@ -55,6 +61,12 @@ class NookStopAPISchema < GraphQL::Schema
     case obj
     when Item
       resolve_item_type(abstract_type, obj, ctx)
+    when Insect
+      Objects::Insect
+    when Fish
+      Objects::Fish
+    when SeaCreature
+      Objects::SeaCreature
     end
   end
 

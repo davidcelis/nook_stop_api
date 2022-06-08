@@ -227,6 +227,39 @@ enum AccessoryShape {
 }
 
 """
+A structured representation of the hours during which a creature can be caught,
+as a range. If the `start` is greater than the `end` of this range, it means the
+range extends past the end of the day, wrapping back around through some number
+of hours following the beginning of the day.
+"""
+type ActiveCreatureHours {
+  """
+  The end of the time range, from `0` to `23`.
+  """
+  end: Int!
+
+  """
+  The start of the time range, from `0` to `23`.
+  """
+  start: Int!
+}
+
+"""
+A structured representation of a month during which a creature can be caught, including the hours of day.
+"""
+type ActiveCreatureMonth {
+  """
+  The hours in this month during which the creature can be caught. If not present, the creature can be caught all day.
+  """
+  hours: ActiveCreatureHours
+
+  """
+  One of the months during which the creature can be caught.
+  """
+  month: Month!
+}
+
+"""
 Artwork is purchased by Redd and assessed as genuine or fake by Blathers in the Museum.
 """
 type Artwork implements HHAItem & Item & Node & PlaceableItem {
@@ -766,6 +799,14 @@ type Bottom implements Clothing & HHAItem & Item & Node {
   width: Float!
 }
 
+enum CatchDifficulty {
+  EASY
+  HARD
+  MEDIUM
+  VERY_EASY
+  VERY_HARD
+}
+
 """
 Ceiling Decor are pieces of furniture that can be hung from the ceiling.
 """
@@ -1039,6 +1080,98 @@ interface Clothing {
 
   """
   The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Something in Animal Crossing that is considered a creature.
+"""
+interface Creature {
+  """
+  A list of months during which the creature can be caught on islands in the specified hemisphere.
+  """
+  activeTimes(hemisphere: Hemisphere!): [ActiveCreatureMonth!]!
+
+  """
+  The version of Animal Crossing New Horizons in which this creature first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  The (more often than not) delightfully punny phrase uttered by the player when this creature is caught.
+  """
+  catchPhrase: String!
+
+  """
+  The description of this creature, courtesy of Blathers.
+  """
+  description: String!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this creature.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this creature is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  A URL pointing to an image of this creature as shown in the Critterpedia.
+  """
+  imageUrl: URL!
+
+  """
+  A unique identifier for this creature that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this creature acts as a surface when placed as furniture,
+  allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this creature when placed as furniture, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The name of this creature.
+  """
+  name: String!
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The rate at which this creature spawns on the player's island.
+  """
+  spawnRate: String!
+
+  """
+  The number of other creatures of the same type that the player must catch in
+  their lifetime before this creature will spawn on their island.
+  """
+  totalCatchesToUnlock: Int!
+
+  """
+  A description of where this creature can be found.
+  """
+  whereToCatch: String!
+
+  """
+  The width of this creature when placed as furniture, in grid blocks.
   """
   width: Float!
 }
@@ -1466,6 +1599,138 @@ type Fencing implements CustomizableItem & Item & Node {
   A list of one or more unique variants of this item.
   """
   variants: [ItemVariant!]!
+}
+
+enum FieldOfVision {
+  MEDIUM
+  NARROW
+  VERY_NARROW
+  VERY_WIDE
+  WIDE
+}
+
+"""
+Fish are caught by using a fishing rod and can be donated to Blathers for
+display in the Museum. Many fish can only be caught in certain places, at
+certain times, or under certain conditions.
+"""
+type Fish implements Creature & Node {
+  """
+  A list of months during which the creature can be caught on islands in the specified hemisphere.
+  """
+  activeTimes(hemisphere: Hemisphere!): [ActiveCreatureMonth!]!
+
+  """
+  The version of Animal Crossing New Horizons in which this creature first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  The (more often than not) delightfully punny phrase uttered by the player when this creature is caught.
+  """
+  catchPhrase: String!
+
+  """
+  The description of this creature, courtesy of Blathers.
+  """
+  description: String!
+
+  """
+  How difficult it is to catch this fish.
+  """
+  difficultyToCatch: CatchDifficulty!
+
+  """
+  The fish's field of vision, which affects how easy it is for it to see the player's tackle when cast.
+  """
+  fieldOfVision: FieldOfVision!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this creature.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this creature is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  A URL pointing to an image of this creature as shown in the Critterpedia.
+  """
+  imageUrl: URL!
+
+  """
+  A unique identifier for this creature that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this creature acts as a surface when placed as furniture,
+  allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this creature when placed as furniture, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  The name of this creature.
+  """
+  name: String!
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The size of the visible shadow cast by the fish as it swims around.
+  """
+  shadowSize: ShadowSize!
+
+  """
+  The rate at which this creature spawns on the player's island.
+  """
+  spawnRate: String!
+
+  """
+  The number of other creatures of the same type that the player must catch in
+  their lifetime before this creature will spawn on their island.
+  """
+  totalCatchesToUnlock: Int!
+
+  """
+  Weather conditions that must be met in order to catch this fish.
+  """
+  weatherConditions: Weather
+
+  """
+  A description of where this creature can be found.
+  """
+  whereToCatch: String!
+
+  """
+  The width of this creature when placed as furniture, in grid blocks.
+  """
+  width: Float!
 }
 
 """
@@ -2573,6 +2838,11 @@ enum HeadwearShape {
   HEADGEAR_NO_EARS_NO_JAW
 }
 
+enum Hemisphere {
+  NORTHERN
+  SOUTHERN
+}
+
 """
 Houseware is a type of general-purpose furniture item in Animal Crossing.
 """
@@ -2751,6 +3021,110 @@ type Houseware implements CustomizableItem & HHAItem & Item & Node & PlaceableIt
 
   """
   The width of this item when placed, in grid blocks.
+  """
+  width: Float!
+}
+
+"""
+Insects are caught by using a bug net and can be donated to Blathers for display
+in the Museum. Many insects can only be caught in certain places, at certain
+times, or under certain conditions.
+"""
+type Insect implements Creature & Node {
+  """
+  A list of months during which the creature can be caught on islands in the specified hemisphere.
+  """
+  activeTimes(hemisphere: Hemisphere!): [ActiveCreatureMonth!]!
+
+  """
+  The version of Animal Crossing New Horizons in which this creature first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  The (more often than not) delightfully punny phrase uttered by the player when this creature is caught.
+  """
+  catchPhrase: String!
+
+  """
+  The description of this creature, courtesy of Blathers.
+  """
+  description: String!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this creature.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this creature is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  A URL pointing to an image of this creature as shown in the Critterpedia.
+  """
+  imageUrl: URL!
+
+  """
+  A unique identifier for this creature that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this creature acts as a surface when placed as furniture,
+  allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this creature when placed as furniture, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The name of this creature.
+  """
+  name: String!
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The rate at which this creature spawns on the player's island.
+  """
+  spawnRate: String!
+
+  """
+  The number of other creatures of the same type that the player must catch in
+  their lifetime before this creature will spawn on their island.
+  """
+  totalCatchesToUnlock: Int!
+
+  """
+  Weather conditions that must be met in order to catch this insect.
+  """
+  weatherConditions: Weather
+
+  """
+  A description of where this creature can be found.
+  """
+  whereToCatch: String!
+
+  """
+  The width of this creature when placed as furniture, in grid blocks.
   """
   width: Float!
 }
@@ -3288,6 +3662,30 @@ type MiscellaneousFurniture implements CustomizableItem & HHAItem & Item & Node 
   width: Float!
 }
 
+enum Month {
+  APRIL
+  AUGUST
+  DECEMBER
+  FEBRUARY
+  JANUARY
+  JULY
+  JUNE
+  MARCH
+  MAY
+  NOVEMBER
+  OCTOBER
+  SEPTEMBER
+}
+
+enum MovementSpeed {
+  FAST
+  MEDIUM
+  SLOW
+  STATIONARY
+  VERY_FAST
+  VERY_SLOW
+}
+
 """
 Music albums can be registered and played by interacting with a speaker. They
 can also be placed on a surface or the ground to be displayed in a frame.
@@ -3650,6 +4048,21 @@ interface PlaceableItem {
 
 type Query {
   """
+  Returns a single creature by internal ID or name. One and only one must be provided.
+  """
+  creature(
+    """
+    The ID of the creature used internally by Animal Crossing.
+    """
+    internalId: Int
+
+    """
+    The name of the creature. This argument is not case sensitive.
+    """
+    name: String
+  ): Creature!
+
+  """
   Returns a single item by internal ID or name. One and only one must be provided.
   """
   item(
@@ -3844,12 +4257,137 @@ enum RugSize {
   SMALL
 }
 
+"""
+Sea Creatures are caught by diving into the ocean with a wetsuit equipped and
+they can be donated to Blathers for display in the Museum. Many sea creatures
+can only be caught at certain times.
+"""
+type SeaCreature implements Creature & Node {
+  """
+  A list of months during which the creature can be caught on islands in the specified hemisphere.
+  """
+  activeTimes(hemisphere: Hemisphere!): [ActiveCreatureMonth!]!
+
+  """
+  The version of Animal Crossing New Horizons in which this creature first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  Whether or not this item can be placed outdoors.
+  """
+  canBePlacedOutdoors: Boolean!
+
+  """
+  The (more often than not) delightfully punny phrase uttered by the player when this creature is caught.
+  """
+  catchPhrase: String!
+
+  """
+  The description of this creature, courtesy of Blathers.
+  """
+  description: String!
+
+  """
+  The minimum number of points awarded by the Happy Home Academy for displaying this creature.
+  """
+  hhaBasePoints: Int!
+
+  """
+  A shared category of which this creature is a member, as determined by the Happy Home Academy.
+  """
+  hhaCategory: HHACategory
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  A URL pointing to an image of this creature as shown in the Critterpedia.
+  """
+  imageUrl: URL!
+
+  """
+  A unique identifier for this creature that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  Whether or not this creature acts as a surface when placed as furniture,
+  allowing Miscellaneous items and Photos to be placed on top of it.
+  """
+  isASurface: Boolean!
+
+  """
+  The length of this creature when placed as furniture, in grid blocks.
+  """
+  length: Float!
+
+  """
+  The type of light emitted by this item when placed.
+  """
+  lightingType: LightingType
+
+  """
+  The speed at which this sea creature moves along the sea bed.
+  """
+  movementSpeed: MovementSpeed!
+
+  """
+  The name of this creature.
+  """
+  name: String!
+
+  """
+  The resale value of this item in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The size of the visible shadow cast by the sea creature as it moves around.
+  """
+  shadowSize: ShadowSize!
+
+  """
+  The rate at which this creature spawns on the player's island.
+  """
+  spawnRate: String!
+
+  """
+  The number of other creatures of the same type that the player must catch in
+  their lifetime before this creature will spawn on their island.
+  """
+  totalCatchesToUnlock: Int!
+
+  """
+  A description of where this creature can be found.
+  """
+  whereToCatch: String!
+
+  """
+  The width of this creature when placed as furniture, in grid blocks.
+  """
+  width: Float!
+}
+
 enum Season {
   FALL
   SPRING
   SUMMER
   WINTER
   YEAR_ROUND
+}
+
+enum ShadowSize {
+  L
+  LONG
+  M
+  S
+  XL
+  XL_WITH_FIN
+  XS
+  XXL
 }
 
 """
@@ -5277,6 +5815,11 @@ type Wallpaper implements HHAItem & Item & Node {
   The type of windows installed in the room when this wallpaper is applied.
   """
   windowType: WindowType
+}
+
+enum Weather {
+  CLEAR
+  RAIN
 }
 
 """
