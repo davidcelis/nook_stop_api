@@ -2,6 +2,8 @@ class NookStopAPISchema < GraphQL::Schema
   mutation(Mutations::Mutation)
   query(Queries::Query)
 
+  default_max_page_size(Pagy::DEFAULT[:items])
+
   # For batch-loading (see https://graphql-ruby.org/dataloader/overview.html)
   use GraphQL::Dataloader
 
@@ -35,12 +37,7 @@ class NookStopAPISchema < GraphQL::Schema
     Objects::Artwork,
     Objects::Gyroid,
     Objects::OtherItem,
-
-    # Creatures
-    Objects::Insect,
-    Objects::Fish,
-    Objects::SeaCreature
-)
+  )
 
   rescue_from(ActiveRecord::RecordNotFound) do |err, obj, args, ctx, field|
     # Raise a graphql-friendly error with a custom message

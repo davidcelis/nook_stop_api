@@ -24,6 +24,11 @@ module Queries
       end
     end
 
+    field :items, Interfaces::Item.connection_type, null: false, description: "Returns a list of paginated items."
+    def items
+      Item.all
+    end
+
     field :creature, Interfaces::Creature, null: false, description: "Returns a single creature by internal ID or name. One and only one must be provided." do
       argument :internal_id, Integer, required: false, description: "The ID of the creature used internally by Animal Crossing.", as: :id
       argument :name, String, required: false, description: "The name of the creature. This argument is not case sensitive.", prepare: ->(name, _) {
@@ -42,6 +47,21 @@ module Queries
       elsif name.present?
         ::Creature.where("lower(name) = ?", name).first!
       end
+    end
+
+    field :fish, Objects::Fish.connection_type, null: false, description: "Returns a list of paginated fish."
+    def fish
+      Fish.all
+    end
+
+    field :insects, Objects::Insect.connection_type, null: false, description: "Returns a list of paginated insects."
+    def insects
+      Insect.all
+    end
+
+    field :sea_creatures, Objects::SeaCreature.connection_type, null: false, description: "Returns a list of paginated sea creatures."
+    def sea_creatures
+      SeaCreature.all
     end
   end
 end

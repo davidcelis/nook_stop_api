@@ -1734,6 +1734,42 @@ type Fish implements Creature & Node {
 }
 
 """
+The connection type for Fish.
+"""
+type FishConnection {
+  """
+  A list of edges.
+  """
+  edges: [FishEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [Fish]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""
+An edge in a connection.
+"""
+type FishEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Fish
+}
+
+"""
 Flooring can be used to customize the appearance of a room's floors.
 """
 type Flooring implements HHAItem & Item & Node {
@@ -3130,6 +3166,42 @@ type Insect implements Creature & Node {
 }
 
 """
+The connection type for Insect.
+"""
+type InsectConnection {
+  """
+  A list of edges.
+  """
+  edges: [InsectEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [Insect]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""
+An edge in a connection.
+"""
+type InsectEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Insect
+}
+
+"""
 The kind of interactivity offered by certain items.
 """
 enum Interaction {
@@ -3409,6 +3481,42 @@ interface Item {
   A list of one or more unique variants of this item.
   """
   variants: [ItemVariant!]!
+}
+
+"""
+The connection type for Item.
+"""
+type ItemConnection {
+  """
+  A list of edges.
+  """
+  edges: [ItemEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [Item]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""
+An edge in a connection.
+"""
+type ItemEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Item
 }
 
 """
@@ -3989,6 +4097,31 @@ type OtherItem implements HHAItem & Item & Node & PlaceableItem {
   width: Float!
 }
 
+"""
+Information about pagination in a connection.
+"""
+type PageInfo {
+  """
+  When paginating forwards, the cursor to continue.
+  """
+  endCursor: String
+
+  """
+  When paginating forwards, are there more items?
+  """
+  hasNextPage: Boolean!
+
+  """
+  When paginating backwards, are there more items?
+  """
+  hasPreviousPage: Boolean!
+
+  """
+  When paginating backwards, the cursor to continue.
+  """
+  startCursor: String
+}
+
 enum PatternCustomizationOption {
   """
   Can be customized using patterns developed by the player.
@@ -4063,6 +4196,56 @@ type Query {
   ): Creature!
 
   """
+  Returns a list of paginated fish.
+  """
+  fish(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): FishConnection!
+
+  """
+  Returns a list of paginated insects.
+  """
+  insects(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): InsectConnection!
+
+  """
   Returns a single item by internal ID or name. One and only one must be provided.
   """
   item(
@@ -4076,6 +4259,31 @@ type Query {
     """
     name: String
   ): Item!
+
+  """
+  Returns a list of paginated items.
+  """
+  items(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ItemConnection!
 
   """
   Fetches an object given its ID.
@@ -4096,6 +4304,31 @@ type Query {
     """
     ids: [ID!]!
   ): [Node]!
+
+  """
+  Returns a list of paginated sea creatures.
+  """
+  seaCreatures(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): SeaCreatureConnection!
 }
 
 """
@@ -4369,6 +4602,42 @@ type SeaCreature implements Creature & Node {
   The width of this creature when placed as furniture, in grid blocks.
   """
   width: Float!
+}
+
+"""
+The connection type for SeaCreature.
+"""
+type SeaCreatureConnection {
+  """
+  A list of edges.
+  """
+  edges: [SeaCreatureEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [SeaCreature]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""
+An edge in a connection.
+"""
+type SeaCreatureEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: SeaCreature
 }
 
 enum Season {
