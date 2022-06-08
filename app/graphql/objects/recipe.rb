@@ -30,7 +30,7 @@ class Objects::Recipe < Objects::BaseObject
 
   field :total_recipes_to_unlock, Integer, null: false, description: "The number of other recipes that the player must learn in their lifetime before this recipe will appear on their island."
 
-   # Metadata
+  # Metadata
   field :added_in_version, Scalars::Version, null: false, description: "The version of Animal Crossing New Horizons in which this recipe first appeared."
   field :internal_id, Integer, null: false, description: "A unique identifier for this recipe that is internal to the game.", method: :unique_internal_id
 end

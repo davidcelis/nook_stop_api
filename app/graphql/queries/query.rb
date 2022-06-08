@@ -24,7 +24,7 @@ module Queries
       end
     end
 
-    field :items, Interfaces::Item.connection_type, null: false, description: "Returns a list of paginated items."
+    field :items, Interfaces::Item.connection_type, null: false, description: "Returns a paginated list of items."
     def items
       Item.all
     end
@@ -49,7 +49,7 @@ module Queries
       end
     end
 
-    field :recipes, Objects::Recipe.connection_type, null: false, description: "Returns a list of paginated recipes."
+    field :recipes, Objects::Recipe.connection_type, null: false, description: "Returns a paginated list of recipes."
     def recipes
       Recipe.all
     end
@@ -74,19 +74,33 @@ module Queries
       end
     end
 
-    field :fish, Objects::Fish.connection_type, null: false, description: "Returns a list of paginated fish."
+    field :fish, Objects::Fish.connection_type, null: false, description: "Returns a paginated list of fish."
     def fish
       Fish.all
     end
 
-    field :insects, Objects::Insect.connection_type, null: false, description: "Returns a list of paginated insects."
+    field :insects, Objects::Insect.connection_type, null: false, description: "Returns a paginated list of insects."
     def insects
       Insect.all
     end
 
-    field :sea_creatures, Objects::SeaCreature.connection_type, null: false, description: "Returns a list of paginated sea creatures."
+    field :sea_creatures, Objects::SeaCreature.connection_type, null: false, description: "Returns a paginated list of sea creatures."
     def sea_creatures
       SeaCreature.all
+    end
+
+    field :villager, Objects::Villager, null: false, description: "Returns a single villager by name." do
+      argument :name, String, required: true, description: "The name of the villager. This argument is case sensitive.", prepare: ->(name, _) {
+        name.downcase
+      }
+    end
+    def villager(name:)
+      dataloader.with(Sources::ObjectByColumn, Villager, :name).load(name)
+    end
+
+    field :villagers, Objects::Villager.connection_type, null: false, description: "Returns a paginated list of villagers."
+    def villagers
+      Villager.all
     end
   end
 end

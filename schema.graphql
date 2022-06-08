@@ -108,7 +108,7 @@ type Accessory implements Clothing & HHAItem & Item & Node {
   """
   Label's fashion themes for which this item fits.
   """
-  labelThemes: [String!]!
+  labelThemes: [LabelTheme!]!
 
   """
   The length of this item when placed, in grid blocks.
@@ -173,7 +173,7 @@ type Accessory implements Clothing & HHAItem & Item & Node {
   """
   The fashion styles associated with this item.
   """
-  styles: [String!]!
+  styles: [Style!]!
 
   """
   A list of one or more unique variants of this item.
@@ -544,7 +544,7 @@ type Bag implements Clothing & HHAItem & Item & Node {
   """
   Label's fashion themes for which this item fits.
   """
-  labelThemes: [String!]!
+  labelThemes: [LabelTheme!]!
 
   """
   The length of this item when placed, in grid blocks.
@@ -604,7 +604,7 @@ type Bag implements Clothing & HHAItem & Item & Node {
   """
   The fashion styles associated with this item.
   """
-  styles: [String!]!
+  styles: [Style!]!
 
   """
   A list of one or more unique variants of this item.
@@ -726,7 +726,7 @@ type Bottom implements Clothing & HHAItem & Item & Node {
   """
   Label's fashion themes for which this item fits.
   """
-  labelThemes: [String!]!
+  labelThemes: [LabelTheme!]!
 
   """
   The length of this item when placed, in grid blocks.
@@ -786,7 +786,7 @@ type Bottom implements Clothing & HHAItem & Item & Node {
   """
   The fashion styles associated with this item.
   """
-  styles: [String!]!
+  styles: [Style!]!
 
   """
   A list of one or more unique variants of this item.
@@ -1051,7 +1051,7 @@ interface Clothing {
   """
   Label's fashion themes for which this item fits.
   """
-  labelThemes: [String!]!
+  labelThemes: [LabelTheme!]!
 
   """
   The length of this item when placed, in grid blocks.
@@ -1076,12 +1076,30 @@ interface Clothing {
   """
   The fashion styles associated with this item.
   """
-  styles: [String!]!
+  styles: [Style!]!
 
   """
   The width of this item when placed, in grid blocks.
   """
   width: Float!
+}
+
+"""
+A list of item types that can be crafted with DIY Recipes.
+"""
+enum CraftedItemType {
+  CEILING_DECOR
+  EQUIPMENT
+  FLOORS
+  HOUSEWARES
+  MISCELLANEOUS
+  OTHER
+  RUGS
+  SAVORY_FOOD
+  SWEET_FOOD
+  TOOLS
+  WALLPAPER
+  WALL_MOUNTED
 }
 
 """
@@ -1383,7 +1401,7 @@ type DressUp implements Clothing & HHAItem & Item & Node {
   """
   Label's fashion themes for which this item fits.
   """
-  labelThemes: [String!]!
+  labelThemes: [LabelTheme!]!
 
   """
   The length of this item when placed, in grid blocks.
@@ -1448,7 +1466,7 @@ type DressUp implements Clothing & HHAItem & Item & Node {
   """
   The fashion styles associated with this item.
   """
-  styles: [String!]!
+  styles: [Style!]!
 
   """
   A list of one or more unique variants of this item.
@@ -2038,6 +2056,11 @@ type Fossil implements HHAItem & Item & Node & PlaceableItem {
   The width of this item when placed, in grid blocks.
   """
   width: Float!
+}
+
+enum Gender {
+  FEMALE
+  MALE
 }
 
 enum GenderPresentation {
@@ -2731,7 +2754,7 @@ type Headwear implements Clothing & HHAItem & Item & Node {
   """
   Label's fashion themes for which this item fits.
   """
-  labelThemes: [String!]!
+  labelThemes: [LabelTheme!]!
 
   """
   The length of this item when placed, in grid blocks.
@@ -2796,7 +2819,7 @@ type Headwear implements Clothing & HHAItem & Item & Node {
   """
   The fashion styles associated with this item.
   """
-  styles: [String!]!
+  styles: [Style!]!
 
   """
   A list of one or more unique variants of this item.
@@ -2877,6 +2900,18 @@ enum HeadwearShape {
 enum Hemisphere {
   NORTHERN
   SOUTHERN
+}
+
+"""
+A list of hobbies that villagers commonly have.
+"""
+enum Hobby {
+  EDUCATION
+  FASHION
+  FITNESS
+  MUSIC
+  NATURE
+  PLAY
 }
 
 """
@@ -3572,6 +3607,23 @@ type ItemVariant implements Node {
 }
 
 """
+A list of themes that Label may ask you to design an outfit for.
+"""
+enum LabelTheme {
+  COMFY
+  EVERYDAY
+  FAIRY_TALE
+  FORMAL
+  GOTH
+  OUTDOORSY
+  PARTY
+  SPORTY
+  THEATRICAL
+  VACATION
+  WORK
+}
+
+"""
 Kinds and qualities of light that can be emitted by certain items.
 """
 enum LightingType {
@@ -4145,6 +4197,31 @@ enum PatternCustomizationOption {
 }
 
 """
+Villagers can have a variety of personality types that dictate their hobbies, friendships, and many other things.
+"""
+enum Personality {
+  """
+  Also commonly referred to as the "Uchi" personality.
+  """
+  BIG_SISTER
+  CRANKY
+  JOCK
+  LAZY
+  NORMAL
+  PEPPY
+  SMUG
+  SNOOTY
+}
+
+"""
+As according to the Type A and Type B personality theory.
+"""
+enum PersonalityType {
+  A
+  B
+}
+
+"""
 An item that can be placed on the ground (or some other horizontal surface) and act as furniture or decor.
 """
 interface PlaceableItem {
@@ -4201,7 +4278,7 @@ type Query {
   ): Creature!
 
   """
-  Returns a list of paginated fish.
+  Returns a paginated list of fish.
   """
   fish(
     """
@@ -4226,7 +4303,7 @@ type Query {
   ): FishConnection!
 
   """
-  Returns a list of paginated insects.
+  Returns a paginated list of insects.
   """
   insects(
     """
@@ -4266,7 +4343,7 @@ type Query {
   ): Item!
 
   """
-  Returns a list of paginated items.
+  Returns a paginated list of items.
   """
   items(
     """
@@ -4311,7 +4388,47 @@ type Query {
   ): [Node]!
 
   """
-  Returns a list of paginated sea creatures.
+  Returns a single recipe by internal ID or using the name of the crafted item. One and only one must be provided.
+  """
+  recipe(
+    """
+    The ID of the recipe used internally by Animal Crossing.
+    """
+    internalId: Int
+
+    """
+    The name of the crafted item. This argument is not case sensitive.
+    """
+    name: String
+  ): Recipe!
+
+  """
+  Returns a paginated list of recipes.
+  """
+  recipes(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): RecipeConnection!
+
+  """
+  Returns a paginated list of sea creatures.
   """
   seaCreatures(
     """
@@ -4334,7 +4451,188 @@ type Query {
     """
     last: Int
   ): SeaCreatureConnection!
+
+  """
+  Returns a single villager by name.
+  """
+  villager(
+    """
+    The name of the villager. This argument is case sensitive.
+    """
+    name: String!
+  ): Villager!
+
+  """
+  Returns a paginated list of villagers.
+  """
+  villagers(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): VillagerConnection!
 }
+
+"""
+DIY Recipes are used to learn how to craft things at a workbench or to cook things in a kitchen.
+"""
+type Recipe implements Node {
+  """
+  The version of Animal Crossing New Horizons in which this recipe first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  An alternative currency with which this recipe can be purchased.
+  """
+  alternativeCurrency: Currency
+
+  """
+  The amount of alternative currency with which this recipe can be purchased.
+  """
+  alternativePrice: Int
+
+  """
+  A URL pointing to an image of the item crafted by this recipe.
+  """
+  craftedItemImageUrl: URL!
+
+  """
+  Whether or not this recipe can only be acquired during its seasonal event.
+  """
+  exclusiveToSeasonalEvent: Boolean
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  A unique identifier for this recipe that is internal to the game.
+  """
+  internalId: Int!
+
+  """
+  The item crafted by this recipe.
+  """
+  item: Item!
+
+  """
+  A list of materials required to craft this recipe's item, along with their amounts.
+  """
+  materials: [RecipeMaterial!]!
+
+  """
+  The price of this recipe in Bells. If not present, it means the recipe cannot be bought with Bells.
+  """
+  price: Int
+
+  """
+  The resale value of this recipe in Bells.
+  """
+  resaleValue: Int!
+
+  """
+  The seasonal event during which this recipe is available.
+  """
+  seasonalEvent: String
+
+  """
+  Additional freeform notes on acquiring this recipe.
+  """
+  sourceNotes: String
+
+  """
+  A list of sources for acquiring this recipe.
+  """
+  sources: [String!]!
+
+  """
+  The number of other recipes that the player must learn in their lifetime before this recipe will appear on their island.
+  """
+  totalRecipesToUnlock: Int!
+
+  """
+  The type of item that is crafted using this recipe.
+  """
+  type: CraftedItemType!
+}
+
+"""
+The connection type for Recipe.
+"""
+type RecipeConnection {
+  """
+  A list of edges.
+  """
+  edges: [RecipeEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [Recipe]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""
+An edge in a connection.
+"""
+type RecipeEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Recipe
+}
+
+"""
+Materials are consumed to craft an item using a DIY Recipe.
+"""
+type RecipeMaterial implements Node {
+  """
+  The number of this item used by the recipe.
+  """
+  count: Int!
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  The item used by the recipe.
+  """
+  item: RecipeMaterialItem!
+}
+
+"""
+Items which may be used to craft a recipe.
+"""
+union RecipeMaterialItem = CeilingDecor | DressUp | Fish | Flooring | HandheldItem | Houseware | MiscellaneousFurniture | OtherItem | SeaCreature | WallMountedFurniture | Wallpaper
 
 """
 Rugs come in a variety of sizes and can decorate a room's floor with or without furniture placed on top.
@@ -4773,7 +5071,7 @@ type Shoes implements Clothing & HHAItem & Item & Node {
   """
   Label's fashion themes for which this item fits.
   """
-  labelThemes: [String!]!
+  labelThemes: [LabelTheme!]!
 
   """
   The length of this item when placed, in grid blocks.
@@ -4833,7 +5131,7 @@ type Shoes implements Clothing & HHAItem & Item & Node {
   """
   The fashion styles associated with this item.
   """
-  styles: [String!]!
+  styles: [Style!]!
 
   """
   A list of one or more unique variants of this item.
@@ -4955,7 +5253,7 @@ type Socks implements Clothing & HHAItem & Item & Node {
   """
   Label's fashion themes for which this item fits.
   """
-  labelThemes: [String!]!
+  labelThemes: [LabelTheme!]!
 
   """
   The length of this item when placed, in grid blocks.
@@ -5015,7 +5313,7 @@ type Socks implements Clothing & HHAItem & Item & Node {
   """
   The fashion styles associated with this item.
   """
-  styles: [String!]!
+  styles: [Style!]!
 
   """
   A list of one or more unique variants of this item.
@@ -5056,6 +5354,59 @@ enum SpeakerType {
   "Retro" quality, which is slightly lower quality than `HI_FI`.
   """
   RETRO
+}
+
+"""
+A list of animal species that each Villager can belong to.
+"""
+enum Species {
+  ALLIGATOR
+  ANTEATER
+  BEAR
+  BEAR_CUB
+  BIRD
+  BULL
+  CAT
+  CHICKEN
+  COW
+  DEER
+  DOG
+  DUCK
+  EAGLE
+  ELEPHANT
+  FROG
+  GOAT
+  GORILLA
+  HAMSTER
+  HIPPO
+  HORSE
+  KANGAROO
+  KOALA
+  LION
+  MONKEY
+  MOUSE
+  OCTOPUS
+  OSTRICH
+  PENGUIN
+  PIG
+  RABBIT
+  RHINOCEROS
+  SHEEP
+  SQUIRREL
+  TIGER
+  WOLF
+}
+
+"""
+A list of fashion styles that clothing can have or that villagers can prefer.
+"""
+enum Style {
+  ACTIVE
+  COOL
+  CUTE
+  ELEGANT
+  GORGEOUS
+  SIMPLE
 }
 
 """
@@ -5167,7 +5518,7 @@ type Top implements Clothing & HHAItem & Item & Node {
   """
   Label's fashion themes for which this item fits.
   """
-  labelThemes: [String!]!
+  labelThemes: [LabelTheme!]!
 
   """
   The length of this item when placed, in grid blocks.
@@ -5227,7 +5578,7 @@ type Top implements Clothing & HHAItem & Item & Node {
   """
   The fashion styles associated with this item.
   """
-  styles: [String!]!
+  styles: [Style!]!
 
   """
   A list of one or more unique variants of this item.
@@ -5354,7 +5705,7 @@ type Umbrella implements Clothing & HHAItem & Item & Node {
   """
   Label's fashion themes for which this item fits.
   """
-  labelThemes: [String!]!
+  labelThemes: [LabelTheme!]!
 
   """
   The length of this item when placed, in grid blocks.
@@ -5414,7 +5765,7 @@ type Umbrella implements Clothing & HHAItem & Item & Node {
   """
   The fashion styles associated with this item.
   """
-  styles: [String!]!
+  styles: [Style!]!
 
   """
   A list of one or more unique variants of this item.
@@ -5431,6 +5782,177 @@ type Umbrella implements Clothing & HHAItem & Item & Node {
 A semantic version string representing a version of Animal Crossing: New Horizons.
 """
 scalar Version
+
+"""
+Villagers are the animal friends who reside on the player's island.
+"""
+type Villager implements Node {
+  """
+  The version of Animal Crossing New Horizons in which this recipe first appeared.
+  """
+  addedInVersion: Version!
+
+  """
+  The day of the month on which the villager was born.
+  """
+  birthDate: Int!
+
+  """
+  The month during which the villager was born.
+  """
+  birthMonth: Month!
+
+  """
+  A phrase very frequently uttered by the villager as a sort of filler speech.
+  """
+  catchphrase: String!
+
+  """
+  The flooring usually used by the villager to decorate their home.
+  """
+  defaultFlooring: Flooring!
+
+  """
+  The kitchen equipment usually used by the villager when cooking.
+  """
+  defaultKitchenEquipment: ItemVariant!
+
+  """
+  The Top usually worn by the villager.
+  """
+  defaultTop: ItemVariant!
+
+  """
+  The Umbrella usually used by the villager when it's raining.
+  """
+  defaultUmbrella: Umbrella!
+
+  """
+  The wallpaper usually used by the villager to decorate their home.
+  """
+  defaultWallpaper: Wallpaper!
+
+  """
+  The workbench usually used by the villager when they're DIY Crafting.
+  """
+  defaultWorkbench: ItemVariant!
+
+  """
+  The villager's favorite colors.
+  """
+  favoriteColors: [String!]!
+
+  """
+  The villager's favorite phrase.
+  """
+  favoriteSaying: String!
+
+  """
+  The villager's favorite K.K. Slider song.
+  """
+  favoriteSong: Music!
+
+  """
+  The villager's favorite clothing styles.
+  """
+  favoriteStyles: [Style!]!
+
+  """
+  The villager's gender.
+  """
+  gender: Gender!
+
+  """
+  The villager's main hobby.
+  """
+  hobby: Hobby!
+
+  """
+  A URL pointing to a photo of the villager's home.
+  """
+  houseImageUrl: URL
+
+  """
+  A URL pointing to an icon representing the villager.
+  """
+  iconUrl: URL!
+
+  """
+  ID of the object.
+  """
+  id: ID!
+
+  """
+  A URL pointing to a photo of the villager.
+  """
+  imageUrl: URL!
+
+  """
+  The villager's given name.
+  """
+  name: String!
+
+  """
+  The color of the villager's name, used in the speech bubble when they're speaking.
+  """
+  nameColor: String!
+
+  """
+  The kind of personality the villager has.
+  """
+  personality: Personality!
+
+  """
+  The personality type the villager has, as according to the Type A and Type B personality theory.
+  """
+  personalityType: PersonalityType!
+
+  """
+  The villager's species of animal.
+  """
+  species: Species!
+
+  """
+  The color of the villager's speech bubble that appears when they're speaking.
+  """
+  speechBubbleColor: String!
+}
+
+"""
+The connection type for Villager.
+"""
+type VillagerConnection {
+  """
+  A list of edges.
+  """
+  edges: [VillagerEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [Villager]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""
+An edge in a connection.
+"""
+type VillagerEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Villager
+}
 
 """
 Photos are keepsakes that can be gifted by villagers after becoming good friends with them.
@@ -6207,7 +6729,7 @@ type Wetsuit implements Clothing & HHAItem & Item & Node {
   """
   Label's fashion themes for which this item fits.
   """
-  labelThemes: [String!]!
+  labelThemes: [LabelTheme!]!
 
   """
   The length of this item when placed, in grid blocks.
@@ -6267,7 +6789,7 @@ type Wetsuit implements Clothing & HHAItem & Item & Node {
   """
   The fashion styles associated with this item.
   """
-  styles: [String!]!
+  styles: [Style!]!
 
   """
   A list of one or more unique variants of this item.

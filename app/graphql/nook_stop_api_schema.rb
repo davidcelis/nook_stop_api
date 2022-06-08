@@ -10,33 +10,22 @@ class NookStopAPISchema < GraphQL::Schema
   # Define types that aren't reachable via introspection
   orphan_types(
     # Items
-    Objects::Houseware,
-    Objects::MiscellaneousFurniture,
-    Objects::WallMountedFurniture,
-    Objects::CeilingDecor,
     Objects::InteriorStructure,
-    Objects::Wallpaper,
-    Objects::Flooring,
     Objects::Rug,
     Objects::VillagerPhoto,
     Objects::VillagerPoster,
-    Objects::HandheldItem,
     Objects::Fencing,
     Objects::Top,
     Objects::Bottom,
-    Objects::DressUp,
     Objects::Headwear,
     Objects::Accessory,
     Objects::Socks,
     Objects::Shoes,
     Objects::Bag,
-    Objects::Umbrella,
     Objects::Wetsuit,
-    Objects::Music,
     Objects::Fossil,
     Objects::Artwork,
-    Objects::Gyroid,
-    Objects::OtherItem,
+    Objects::Gyroid
   )
 
   rescue_from(ActiveRecord::RecordNotFound) do |err, obj, args, ctx, field|
