@@ -18,6 +18,13 @@ module Queries
       Item.all
     end
 
+    field :storage, [Objects::ItemVariant], null: false, description: "Returns a list of items you currently have in storage."
+    def storage
+      ids = JSON.parse(context[:account][:storage])
+
+      dataloader.with(Sources::ObjectByColumn, ::ItemVariant, :id).load_all(ids)
+    end
+
     field :recipe, Objects::Recipe, null: false, description: "Returns a single recipe by the name of the crafted item." do
       argument :name, String, required: true, description: "The name of the crafted item."
     end

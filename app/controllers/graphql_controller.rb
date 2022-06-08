@@ -48,5 +48,6 @@ class GraphqlController < ApplicationController
 
   def initialize_account
     cookies.encrypted.permanent[:bells] ||= 0
+    cookies.encrypted.permanent[:storage] ||= JSON.generate([])
   end
 end
