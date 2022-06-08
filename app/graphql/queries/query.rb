@@ -18,7 +18,7 @@ module Queries
       end
 
       if id.present?
-        ::Item.find_by!(shared_internal_id: id)
+        dataloader.with(Sources::ObjectByInternalId, ::Item).load(id)
       elsif name.present?
         ::Item.where("lower(name) = ?", name).first!
       end
@@ -43,7 +43,7 @@ module Queries
       end
 
       if id.present?
-        ::Creature.find_by!(shared_internal_id: id)
+        dataloader.with(Sources::ObjectByInternalId, ::Creature).load(id)
       elsif name.present?
         ::Creature.where("lower(name) = ?", name).first!
       end

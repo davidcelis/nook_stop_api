@@ -19,6 +19,9 @@ module Interfaces::Item
   field :alternative_price, Integer, description: "The amount of alternative currency with which this item can be purchased."
 
   field :variants, [Objects::ItemVariant], null: false, description: "A list of one or more unique variants of this item."
+  def variants
+    dataloader.with(Sources::ItemVariantsByItemId).load(object.id)
+  end
 
   # Metadata
   field :added_in_version, Scalars::Version, null: false, description: "The version of Animal Crossing New Horizons in which this item first appeared."
