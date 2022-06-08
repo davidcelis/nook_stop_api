@@ -8,20 +8,7 @@ class NookStopAPISchema < GraphQL::Schema
   use GraphQL::Dataloader
 
   # Define types that aren't reachable via introspection
-  orphan_types(
-    # Items
-    Objects::InteriorStructure,
-    Objects::Fencing,
-    Objects::Headwear,
-    Objects::Accessory,
-    Objects::Socks,
-    Objects::Shoes,
-    Objects::Bag,
-    Objects::Wetsuit,
-    Objects::Fossil,
-    Objects::Artwork,
-    Objects::Gyroid
-  )
+  orphan_types()
 
   rescue_from(ActiveRecord::RecordNotFound) do |err, obj, args, ctx, field|
     # Raise a graphql-friendly error with a custom message

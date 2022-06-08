@@ -18,7 +18,7 @@ module Queries
       Item.all
     end
 
-    field :storage, [Objects::ItemVariant], null: false, description: "Returns a list of items you currently have in storage."
+    field :storage, [Objects::StoredItem], null: false, description: "Returns a list of items you currently have in storage."
     def storage
       ids = JSON.parse(context[:account][:storage])
 

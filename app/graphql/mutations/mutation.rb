@@ -4,5 +4,6 @@ module Mutations
     field :withdraw, mutation: Mutations::Withdraw
 
     field :purchase, mutation: Mutations::Purchase
+    field :store, mutation: Mutations::Store
   end
 end

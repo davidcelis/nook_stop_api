@@ -4,6 +4,9 @@ class Objects::ItemVariant < Objects::BaseObject
   description "Variants are specific versions of Items. Every Item has at least one \"variant\", but many have multiple variants."
 
   field :item, Interfaces::Item, null: false, description: "The Item of which this object is a variant."
+  def item
+    dataloader.with(Sources::ObjectByColumn, ::Item, :id).load(object.item_id)
+  end
 
   field :body_name, String, description: "The name of this variant's body. Can be used with the `bodyType` of its `item` to construct a more complete name for this variant."
   field :pattern_name, String, description: "The name of this variant's pattern. Can be used with the `patternType` of its `item` to construct a more complete name for this variant."
