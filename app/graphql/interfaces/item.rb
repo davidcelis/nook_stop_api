@@ -20,7 +20,7 @@ module Interfaces::Item
 
   field :variants, [Objects::ItemVariant], null: false, description: "A list of one or more unique variants of this item."
   def variants
-    dataloader.with(Sources::ItemVariantsByItemId).load(object.id)
+    dataloader.with(Sources::ObjectsByColumn, ::ItemVariant, :item_id).load(object.id)
   end
 
   # Metadata
