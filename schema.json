@@ -15950,7 +15950,7 @@
           "fields": [
             {
               "name": "creature",
-              "description": "Returns a single creature by internal ID or name. One and only one must be provided.",
+              "description": "Returns a single creature by name.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -15964,20 +15964,8 @@
               "deprecationReason": null,
               "args": [
                 {
-                  "name": "internalId",
-                  "description": "The ID of the creature used internally by Animal Crossing.",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  },
-                  "defaultValue": null,
-                  "isDeprecated": false,
-                  "deprecationReason": null
-                },
-                {
                   "name": "name",
-                  "description": "The name of the creature. This argument is not case sensitive.",
+                  "description": "The name of the creature.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -16121,7 +16109,7 @@
             },
             {
               "name": "item",
-              "description": "Returns a single item by internal ID or name. One and only one must be provided.",
+              "description": "Returns a single item by name.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -16135,24 +16123,16 @@
               "deprecationReason": null,
               "args": [
                 {
-                  "name": "internalId",
-                  "description": "The ID of the item used internally by Animal Crossing.",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  },
-                  "defaultValue": null,
-                  "isDeprecated": false,
-                  "deprecationReason": null
-                },
-                {
                   "name": "name",
-                  "description": "The name of the item. This argument is not case sensitive.",
+                  "description": "The name of the item.",
                   "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
                   },
                   "defaultValue": null,
                   "isDeprecated": false,
@@ -16301,7 +16281,7 @@
             },
             {
               "name": "recipe",
-              "description": "Returns a single recipe by internal ID or using the name of the crafted item. One and only one must be provided.",
+              "description": "Returns a single recipe by the name of the crafted item.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -16315,24 +16295,16 @@
               "deprecationReason": null,
               "args": [
                 {
-                  "name": "internalId",
-                  "description": "The ID of the recipe used internally by Animal Crossing.",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  },
-                  "defaultValue": null,
-                  "isDeprecated": false,
-                  "deprecationReason": null
-                },
-                {
                   "name": "name",
-                  "description": "The name of the crafted item. This argument is not case sensitive.",
+                  "description": "The name of the crafted item.",
                   "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
                   },
                   "defaultValue": null,
                   "isDeprecated": false,

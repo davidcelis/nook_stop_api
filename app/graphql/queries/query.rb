@@ -4,23 +4,12 @@ module Queries
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    field :item, Interfaces::Item, null: false, description: "Returns a single item by internal ID or name. One and only one must be provided." do
-      argument :internal_id, Integer, required: false, description: "The ID of the item used internally by Animal Crossing.", as: :id
-      argument :name, String, required: false, description: "The name of the item. This argument is not case sensitive.", prepare: ->(name, _) {
-        name.downcase
-      }
+    field :item, Interfaces::Item, null: false, description: "Returns a single item by name." do
+      argument :name, String, required: true, description: "The name of the item."
     end
-    def item(id: nil, name: nil)
-      if id.present? && name.present?
-        raise GraphQL::ExecutionError, "Cannot provide both `internalId` and `name`."
-      elsif id.blank? && name.blank?
-        raise GraphQL::ExecutionError, "Must provide either `internalId` or `name`."
-      end
-
-      if id.present?
-        dataloader.with(Sources::ObjectByColumn, Item, :internal_id).load(id)
-      elsif name.present?
-        Item.where("lower(name) = ?", name).first!
+    def item(name:)
+      dataloader.with(Sources::ObjectByColumn, Item, :name).load(name).tap do |item|
+        raise ActiveRecord::RecordNotFound unless item.present?
       end
     end
 
@@ -29,23 +18,15 @@ module Queries
       Item.all
     end
 
-    field :recipe, Objects::Recipe, null: false, description: "Returns a single recipe by internal ID or using the name of the crafted item. One and only one must be provided." do
-      argument :internal_id, Integer, required: false, description: "The ID of the recipe used internally by Animal Crossing.", as: :id
-      argument :name, String, required: false, description: "The name of the crafted item. This argument is not case sensitive.", prepare: ->(name, _) {
-        name.downcase
-      }
+    field :recipe, Objects::Recipe, null: false, description: "Returns a single recipe by the name of the crafted item." do
+      argument :name, String, required: true, description: "The name of the crafted item."
     end
-    def recipe(id: nil, name: nil)
-      if id.present? && name.present?
-        raise GraphQL::ExecutionError, "Cannot provide both `internalId` and `name`."
-      elsif id.blank? && name.blank?
-        raise GraphQL::ExecutionError, "Must provide either `internalId` or `name`."
-      end
+    def recipe(name:)
+      item = dataloader.with(Sources::ObjectByColumn, Item, :name).load(name)
+      raise ActiveRecord::RecordNotFound unless item.present?
 
-      if id.present?
-        dataloader.with(Sources::ObjectByColumn, Recipe, :internal_id).load(id)
-      elsif name.present?
-        Recipe.joins(:item).where("lower(items.name) = ?", name).first!
+      dataloader.with(Sources::ObjectByColumn, Recipe, :item_id).load(item.id).tap do |recipe|
+        raise ActiveRecord::RecordNotFound unless recipe.present?
       end
     end
 
@@ -54,23 +35,12 @@ module Queries
       Recipe.all
     end
 
-    field :creature, Interfaces::Creature, null: false, description: "Returns a single creature by internal ID or name. One and only one must be provided." do
-      argument :internal_id, Integer, required: false, description: "The ID of the creature used internally by Animal Crossing.", as: :id
-      argument :name, String, required: false, description: "The name of the creature. This argument is not case sensitive.", prepare: ->(name, _) {
-        name.downcase
-      }
+    field :creature, Interfaces::Creature, null: false, description: "Returns a single creature by name." do
+      argument :name, String, required: false, description: "The name of the creature."
     end
-    def creature(id: nil, name: nil)
-      if id.present? && name.present?
-        raise GraphQL::ExecutionError, "Cannot provide both `internalId` and `name`."
-      elsif id.blank? && name.blank?
-        raise GraphQL::ExecutionError, "Must provide either `internalId` or `name`."
-      end
-
-      if id.present?
-        dataloader.with(Sources::ObjectByColumn, Creature, :internal_id).load(id)
-      elsif name.present?
-        Creature.where("lower(name) = ?", name).first!
+    def creature(name:)
+      dataloader.with(Sources::ObjectByColumn, Creature, :name).load(name).tap do |creature|
+        raise ActiveRecord::RecordNotFound unless creature.present?
       end
     end
 
@@ -93,7 +63,9 @@ module Queries
       argument :name, String, required: true, description: "The name of the villager. This argument is case sensitive."
     end
     def villager(name:)
-      dataloader.with(Sources::ObjectByColumn, Villager, :name).load(name)
+      dataloader.with(Sources::ObjectByColumn, Villager, :name).load(name).tap do |villager|
+        raise ActiveRecord::RecordNotFound unless villager.present?
+      end
     end
 
     field :villagers, Objects::Villager.connection_type, null: false, description: "Returns a paginated list of villagers."

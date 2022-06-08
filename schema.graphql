@@ -4323,16 +4323,11 @@ interface PlaceableItem {
 
 type Query {
   """
-  Returns a single creature by internal ID or name. One and only one must be provided.
+  Returns a single creature by name.
   """
   creature(
     """
-    The ID of the creature used internally by Animal Crossing.
-    """
-    internalId: Int
-
-    """
-    The name of the creature. This argument is not case sensitive.
+    The name of the creature.
     """
     name: String
   ): Creature!
@@ -4388,18 +4383,13 @@ type Query {
   ): InsectConnection!
 
   """
-  Returns a single item by internal ID or name. One and only one must be provided.
+  Returns a single item by name.
   """
   item(
     """
-    The ID of the item used internally by Animal Crossing.
+    The name of the item.
     """
-    internalId: Int
-
-    """
-    The name of the item. This argument is not case sensitive.
-    """
-    name: String
+    name: String!
   ): Item!
 
   """
@@ -4448,18 +4438,13 @@ type Query {
   ): [Node]!
 
   """
-  Returns a single recipe by internal ID or using the name of the crafted item. One and only one must be provided.
+  Returns a single recipe by the name of the crafted item.
   """
   recipe(
     """
-    The ID of the recipe used internally by Animal Crossing.
+    The name of the crafted item.
     """
-    internalId: Int
-
-    """
-    The name of the crafted item. This argument is not case sensitive.
-    """
-    name: String
+    name: String!
   ): Recipe!
 
   """

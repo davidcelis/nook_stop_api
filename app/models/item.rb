@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
   has_many :variants, class_name: "ItemVariant"
 
+  has_one :recipe
+
   def pattern_customizable?
     pattern_customization_options.any?
   end
