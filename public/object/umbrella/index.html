@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Umbrella GraphQL documentation">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Umbrella</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js"></script>
+    <script>
+
+    // Add anchors on DOMContentLoaded
+    document.addEventListener("DOMContentLoaded", function(event) {
+      anchors.options = {
+        placement: 'left',
+        visible: 'hover',
+        icon: '¶'
+      };
+      anchors.add('h2, h3, h4, h5, h6, .anchored');
+    });
+
+    </script>
+  </head>
+  <body>
+
+    <div id="wrap">
+      <div id="header">
+      </div>
+      <div id="sidebar">
+        <ul class="categories">
+  <li>
+    <ul class="menu-root">
+      <li>
+        <a href="/">GraphQL Reference</a>
+    </ul>
+  </li>
+
+  <li>
+    <p>Queries</p>
+    <ul class="menu-root">
+      <li>
+        <a href="/operation/query/" class="sidebar-link">
+          Query
+        </a>
+      </li>
+      <li>
+        <a href="/operation/mutation/" class="sidebar-link">
+          Mutation
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <p><a href="/object">Objects</a></p>
+    <ul class="menu-root">
+      
+        
+      <li>
+        <a href="/object/accessory/" class="sidebar-link">
+          Accessory
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/activecreaturehours/" class="sidebar-link">
+          ActiveCreatureHours
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/activecreaturemonth/" class="sidebar-link">
+          ActiveCreatureMonth
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/artwork/" class="sidebar-link">
+          Artwork
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/bag/" class="sidebar-link">
+          Bag
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/bottom/" class="sidebar-link">
+          Bottom
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/ceilingdecor/" class="sidebar-link">
+          CeilingDecor
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/craftpayload/" class="sidebar-link">
+          CraftPayload
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/depositpayload/" class="sidebar-link">
+          DepositPayload
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/dressup/" class="sidebar-link">
+          DressUp
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/fencing/" class="sidebar-link">
+          Fencing
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/fish/" class="sidebar-link">
+          Fish
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/fishconnection/" class="sidebar-link">
+          FishConnection
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/fishedge/" class="sidebar-link">
+          FishEdge
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/flooring/" class="sidebar-link">
+          Flooring
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/fossil/" class="sidebar-link">
+          Fossil
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/gyroid/" class="sidebar-link">
+          Gyroid
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/handhelditem/" class="sidebar-link">
+          HandheldItem
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/headwear/" class="sidebar-link">
+          Headwear
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/houseware/" class="sidebar-link">
+          Houseware
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/insect/" class="sidebar-link">
+          Insect
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/insectconnection/" class="sidebar-link">
+          InsectConnection
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/insectedge/" class="sidebar-link">
+          InsectEdge
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/interiorstructure/" class="sidebar-link">
+          InteriorStructure
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/itemconnection/" class="sidebar-link">
+          ItemConnection
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/itemedge/" class="sidebar-link">
+          ItemEdge
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/itemvariant/" class="sidebar-link">
+          ItemVariant
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/miscellaneousfurniture/" class="sidebar-link">
+          MiscellaneousFurniture
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/music/" class="sidebar-link">
+          Music
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/otheritem/" class="sidebar-link">
+          OtherItem
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/pageinfo/" class="sidebar-link">
+          PageInfo
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/purchasepayload/" class="sidebar-link">
+          PurchasePayload
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/recipe/" class="sidebar-link">
+          Recipe
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/recipeconnection/" class="sidebar-link">
+          RecipeConnection
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/recipeedge/" class="sidebar-link">
+          RecipeEdge
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/recipematerial/" class="sidebar-link">
+          RecipeMaterial
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/rug/" class="sidebar-link">
+          Rug
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/seacreature/" class="sidebar-link">
+          SeaCreature
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/seacreatureconnection/" class="sidebar-link">
+          SeaCreatureConnection
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/seacreatureedge/" class="sidebar-link">
+          SeaCreatureEdge
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/shoes/" class="sidebar-link">
+          Shoes
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/socks/" class="sidebar-link">
+          Socks
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/storepayload/" class="sidebar-link">
+          StorePayload
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/storeditem/" class="sidebar-link">
+          StoredItem
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/top/" class="sidebar-link">
+          Top
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/umbrella/" class="sidebar-link">
+          Umbrella
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/villager/" class="sidebar-link">
+          Villager
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/villagerconnection/" class="sidebar-link">
+          VillagerConnection
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/villageredge/" class="sidebar-link">
+          VillagerEdge
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/villagerphoto/" class="sidebar-link">
+          VillagerPhoto
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/villagerposter/" class="sidebar-link">
+          VillagerPoster
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/wallmountedfurniture/" class="sidebar-link">
+          WallMountedFurniture
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/wallpaper/" class="sidebar-link">
+          Wallpaper
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/wetsuit/" class="sidebar-link">
+          Wetsuit
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/withdrawpayload/" class="sidebar-link">
+          WithdrawPayload
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/__directive/" class="sidebar-link">
+          __Directive
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/__enumvalue/" class="sidebar-link">
+          __EnumValue
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/__field/" class="sidebar-link">
+          __Field
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/__inputvalue/" class="sidebar-link">
+          __InputValue
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/__schema/" class="sidebar-link">
+          __Schema
+        </a>
+      </li>
+      
+        
+      <li>
+        <a href="/object/__type/" class="sidebar-link">
+          __Type
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+
+  <li>
+    <p><a href="/operation/mutation">Mutations</a></p>
+    <ul class="menu-root">
+      
+      
+      <li>
+        <a href="/mutation/craft/" class="sidebar-link">
+          craft
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/mutation/deposit/" class="sidebar-link">
+          deposit
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/mutation/purchase/" class="sidebar-link">
+          purchase
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/mutation/store/" class="sidebar-link">
+          store
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/mutation/withdraw/" class="sidebar-link">
+          withdraw
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+
+  <li>
+    <p><a href="/interface">Interfaces</a></p>
+    <ul class="menu-root">
+      
+        
+        <li>
+          <a href="/interface/clothing/" class="sidebar-link">
+            Clothing
+          </a>
+        </li>
+      
+        
+        <li>
+          <a href="/interface/creature/" class="sidebar-link">
+            Creature
+          </a>
+        </li>
+      
+        
+        <li>
+          <a href="/interface/customizableitem/" class="sidebar-link">
+            CustomizableItem
+          </a>
+        </li>
+      
+        
+        <li>
+          <a href="/interface/hhaitem/" class="sidebar-link">
+            HHAItem
+          </a>
+        </li>
+      
+        
+        <li>
+          <a href="/interface/item/" class="sidebar-link">
+            Item
+          </a>
+        </li>
+      
+        
+        <li>
+          <a href="/interface/node/" class="sidebar-link">
+            Node
+          </a>
+        </li>
+      
+        
+        <li>
+          <a href="/interface/placeableitem/" class="sidebar-link">
+            PlaceableItem
+          </a>
+        </li>
+      
+    </ul>
+  </li>
+
+  <li>
+    <p><a href="/enum">Enums</a></p>
+    <ul class="menu-root">
+      
+      
+      <li>
+        <a href="/enum/accessoryshape/" class="sidebar-link">
+          AccessoryShape
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/artworkcategory/" class="sidebar-link">
+          ArtworkCategory
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/artworkfurniturecategory/" class="sidebar-link">
+          ArtworkFurnitureCategory
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/catchdifficulty/" class="sidebar-link">
+          CatchDifficulty
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/ceilingtype/" class="sidebar-link">
+          CeilingType
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/crafteditemtype/" class="sidebar-link">
+          CraftedItemType
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/currency/" class="sidebar-link">
+          Currency
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/curtaintype/" class="sidebar-link">
+          CurtainType
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/customizationkittype/" class="sidebar-link">
+          CustomizationKitType
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/dressupshape/" class="sidebar-link">
+          DressUpShape
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/fieldofvision/" class="sidebar-link">
+          FieldOfVision
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/gender/" class="sidebar-link">
+          Gender
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/genderpresentation/" class="sidebar-link">
+          GenderPresentation
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/gyroidsoundtype/" class="sidebar-link">
+          GyroidSoundType
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/hhacategory/" class="sidebar-link">
+          HHACategory
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/hhaconcept/" class="sidebar-link">
+          HHAConcept
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/hhaseries/" class="sidebar-link">
+          HHASeries
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/hhaset/" class="sidebar-link">
+          HHASet
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/headwearshape/" class="sidebar-link">
+          HeadwearShape
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/hemisphere/" class="sidebar-link">
+          Hemisphere
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/hobby/" class="sidebar-link">
+          Hobby
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/interaction/" class="sidebar-link">
+          Interaction
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/interiorstructuretype/" class="sidebar-link">
+          InteriorStructureType
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/labeltheme/" class="sidebar-link">
+          LabelTheme
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/lightingtype/" class="sidebar-link">
+          LightingType
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/month/" class="sidebar-link">
+          Month
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/movementspeed/" class="sidebar-link">
+          MovementSpeed
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/patterncustomizationoption/" class="sidebar-link">
+          PatternCustomizationOption
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/personality/" class="sidebar-link">
+          Personality
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/personalitytype/" class="sidebar-link">
+          PersonalityType
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/rugsize/" class="sidebar-link">
+          RugSize
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/season/" class="sidebar-link">
+          Season
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/shadowsize/" class="sidebar-link">
+          ShadowSize
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/speakertype/" class="sidebar-link">
+          SpeakerType
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/species/" class="sidebar-link">
+          Species
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/style/" class="sidebar-link">
+          Style
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/visualeffects/" class="sidebar-link">
+          VisualEffects
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/weather/" class="sidebar-link">
+          Weather
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/windowpanetype/" class="sidebar-link">
+          WindowPaneType
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/windowtype/" class="sidebar-link">
+          WindowType
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/__directivelocation/" class="sidebar-link">
+          __DirectiveLocation
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/enum/__typekind/" class="sidebar-link">
+          __TypeKind
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+
+  <li>
+    <p><a href="/union">Unions</a></p>
+    <ul class="menu-root">
+      
+      
+      <li>
+        <a href="/union/defaultfurniture/" class="sidebar-link">
+          DefaultFurniture
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/union/recipematerialitem/" class="sidebar-link">
+          RecipeMaterialItem
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/union/storableitem/" class="sidebar-link">
+          StorableItem
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+
+  <li>
+    <p><a href="/input_object">Input Objects</a></p>
+    <ul class="menu-root">
+      
+      
+      <li>
+        <a href="/input_object/craftinput/" class="sidebar-link">
+          CraftInput
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/input_object/depositinput/" class="sidebar-link">
+          DepositInput
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/input_object/purchaseinput/" class="sidebar-link">
+          PurchaseInput
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/input_object/storeinput/" class="sidebar-link">
+          StoreInput
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/input_object/withdrawinput/" class="sidebar-link">
+          WithdrawInput
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+
+  <li>
+    <p><a href="/scalar">Scalars</a></p>
+    <ul class="menu-root">
+      
+      
+      <li>
+        <a href="/scalar/boolean/" class="sidebar-link">
+          Boolean
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/scalar/float/" class="sidebar-link">
+          Float
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/scalar/id/" class="sidebar-link">
+          ID
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/scalar/int/" class="sidebar-link">
+          Int
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/scalar/string/" class="sidebar-link">
+          String
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/scalar/url/" class="sidebar-link">
+          URL
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/scalar/version/" class="sidebar-link">
+          Version
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+
+  <li>
+    <p><a href="/directive">Directives</a></p>
+    <ul class="menu-root">
+      
+      
+      <li>
+        <a href="/directive/deprecated/" class="sidebar-link">
+          deprecated
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/directive/include/" class="sidebar-link">
+          include
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/directive/skip/" class="sidebar-link">
+          skip
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+      </div>
+      <div id="content">
+
+        <h1>
+<a id="umbrella" class="anchor" href="#umbrella" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Umbrella</h1>
+<p>Umbrellas can be held by players or villagers. Villagers will typically only hold them when raining.</p>
+<h2>
+<a id="implements" class="anchor" href="#implements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implements</h2>
+<ul>
+   <li><code><a href="/interface/clothing">Clothing</a></code></li>
+   <li><code><a href="/interface/hhaitem">HHAItem</a></code></li>
+   <li><code><a href="/interface/item">Item</a></code></li>
+   <li><code><a href="/interface/node">Node</a></code></li>
+</ul>
+<h2>
+<a id="fields" class="anchor" href="#fields" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fields</h2>
+<div class="field-entry ">
+  <span id="addedinversion" class="field-name anchored">addedInVersion (<code><a href="/scalar/version">Version!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The version of Animal Crossing New Horizons in which this item first appeared.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="alternativecurrency" class="field-name anchored">alternativeCurrency (<code><a href="/enum/currency">Currency</a></code>)</span>
+  <div class="description-wrapper">
+   <p>An alternative currency with which this item can be purchased.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="alternativeprice" class="field-name anchored">alternativePrice (<code><a href="/scalar/int">Int</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The amount of alternative currency with which this item can be purchased.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="canbeplacedoutdoors" class="field-name anchored">canBePlacedOutdoors (<code><a href="/scalar/boolean">Boolean!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>Whether or not this item can be placed outdoors.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="canbewornbyvillagers" class="field-name anchored">canBeWornByVillagers (<code><a href="/scalar/boolean">Boolean!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>Whether or not this item can be worn by villagers</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="exclusivetoseasonalevent" class="field-name anchored">exclusiveToSeasonalEvent (<code><a href="/scalar/boolean">Boolean</a></code>)</span>
+  <div class="description-wrapper">
+   <p>Whether or not this item can only be acquired during its seasonal event.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="fashionseasonavailability" class="field-name anchored">fashionSeasonAvailability (<code><a href="/enum/season">Season</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The season during which this item is available to be purchased from the Able
+Sisters. If <code>null</code>, the item can be purchased from them year-round.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="fashionableforseason" class="field-name anchored">fashionableForSeason (<code><a href="/enum/season">Season</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The season during which this item is considered fashionable. If <code>null</code>, the
+item is considered to be fashionable year-round.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="forsaleincatalog" class="field-name anchored">forSaleInCatalog (<code><a href="/scalar/boolean">Boolean!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>Whether or not this item can be purchased in the in-game Nook Shopping catalog.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="genderpresentation" class="field-name anchored">genderPresentation (<code><a href="/enum/genderpresentation">GenderPresentation</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The gender presentation typically associated with this item when worn by the player.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="genderpresentationforvillagers" class="field-name anchored">genderPresentationForVillagers (<code><a href="/enum/genderpresentation">GenderPresentation</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The gender presentation typically associated with this item when worn by villagers.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="hhabasepoints" class="field-name anchored">hhaBasePoints (<code><a href="/scalar/int">Int!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The minimum number of points awarded by the Happy Home Academy for displaying this item.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="hhacategory" class="field-name anchored">hhaCategory (<code><a href="/enum/hhacategory">HHACategory</a></code>)</span>
+  <div class="description-wrapper">
+   <p>A shared category of which this item is a member, as determined by the Happy Home Academy.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="hhaconcepts" class="field-name anchored">hhaConcepts (<code><a href="/enum/hhaconcept">[HHAConcept!]!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>A list of Happy Home Academy "concepts" to which this item belongs.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="hhaseries" class="field-name anchored">hhaSeries (<code><a href="/enum/hhaseries">HHASeries</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The Happy Home Academy "series" in which this item belongs.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="hhaset" class="field-name anchored">hhaSet (<code><a href="/enum/hhaset">HHASet</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The Happy Home Academy "furniture set" in which this item belongs.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="id" class="field-name anchored">id (<code><a href="/scalar/id">ID!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>ID of the object.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="interactivity" class="field-name anchored">interactivity (<code><a href="/enum/interaction">Interaction</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The type of interaction that this item allows when placed.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="internalid" class="field-name anchored">internalId (<code><a href="/scalar/int">Int!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>A unique identifier for this item that is internal to the game.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="isasurface" class="field-name anchored">isASurface (<code><a href="/scalar/boolean">Boolean!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>Whether or not this item acts as a surface, allowing Miscellaneous items and Photos to be placed on top of it.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="labelthemes" class="field-name anchored">labelThemes (<code><a href="/enum/labeltheme">[LabelTheme!]!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>Label's fashion themes for which this item fits.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="length" class="field-name anchored">length (<code><a href="/scalar/float">Float!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The length of this item when placed, in grid blocks.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="lightingtype" class="field-name anchored">lightingType (<code><a href="/enum/lightingtype">LightingType</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The type of light emitted by this item when placed.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="listedincatalog" class="field-name anchored">listedInCatalog (<code><a href="/scalar/boolean">Boolean!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>Whether or not this item appears in the in-game Nook Shopping catalog.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="mannequinseason" class="field-name anchored">mannequinSeason (<code><a href="/enum/season">[Season!]!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The season or seasons during which this item will appear on mannequins in the Apparel Shop.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="name" class="field-name anchored">name (<code><a href="/scalar/string">String!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The name of this item.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="price" class="field-name anchored">price (<code><a href="/scalar/int">Int</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The price of this item in Bells. If not present, it means the item cannot be bought with Bells.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="resalevalue" class="field-name anchored">resaleValue (<code><a href="/scalar/int">Int!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The resale value of this item in Bells.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="seasonalevent" class="field-name anchored">seasonalEvent (<code><a href="/scalar/string">String</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The seasonal event during which this item is available.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="sourcenotes" class="field-name anchored">sourceNotes (<code><a href="/scalar/string">String</a></code>)</span>
+  <div class="description-wrapper">
+   <p>Additional freeform notes on acquiring this item.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="sources" class="field-name anchored">sources (<code><a href="/scalar/string">[String!]!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>A list of sources for acquiring this item.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="speakertype" class="field-name anchored">speakerType (<code><a href="/enum/speakertype">SpeakerType</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The type of speaker that this item can act as when placed.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="styles" class="field-name anchored">styles (<code><a href="/enum/style">[Style!]!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The fashion styles associated with this item.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="variants" class="field-name anchored">variants (<code><a href="/object/itemvariant">[ItemVariant!]!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>A list of one or more unique variants of this item.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="width" class="field-name anchored">width (<code><a href="/scalar/float">Float!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The width of this item when placed, in grid blocks.</p>
+  </div>
+</div>
+
+      </div>
+
+      <!-- mobile only -->
+      <div id="mobile-header">
+        <a class="menu-button" onclick="document.body.classList.toggle('sidebar-open')"></a>
+        <a class="logo" href="/">
+
+        </a>
+      </div>
+      <div id="mobile-shade"></div>
+
+    </div>
+
+  </body>
+</html>
