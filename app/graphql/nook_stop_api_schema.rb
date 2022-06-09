@@ -2,7 +2,8 @@ class NookStopAPISchema < GraphQL::Schema
   mutation(Mutations::Mutation)
   query(Queries::Query)
 
-  default_max_page_size(Pagy::DEFAULT[:items])
+  default_page_size(Pagy::DEFAULT[:items])
+  default_max_page_size(Pagy::DEFAULT[:max_items])
 
   # For batch-loading (see https://graphql-ruby.org/dataloader/overview.html)
   use GraphQL::Dataloader
