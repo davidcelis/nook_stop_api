@@ -18,13 +18,6 @@ module Queries
       Item.all
     end
 
-    field :storage, [Objects::StoredItem], null: false, description: "Returns a list of items you currently have in storage."
-    def storage
-      ids = JSON.parse(context[:account][:storage])
-
-      dataloader.with(Sources::ObjectByColumn, ::ItemVariant, :id).load_all(ids)
-    end
-
     field :recipe, Objects::Recipe, null: false, description: "Returns a single recipe by the name of the crafted item." do
       argument :name, String, required: true, description: "The name of the crafted item."
     end
@@ -78,6 +71,16 @@ module Queries
     field :villagers, Objects::Villager.connection_type, null: false, description: "Returns a paginated list of villagers."
     def villagers
       Villager.all
+    end
+
+    field :storage, [Objects::StoredItem], null: false, description: "Returns a list of items you currently have in storage."
+    def storage
+      JSON.parse(context[:account][:storage])
+    end
+
+    field :balance, Integer, null: false, description: "Returns your current account balance in Bells."
+    def balance
+      context[:account][:bells]
     end
   end
 end

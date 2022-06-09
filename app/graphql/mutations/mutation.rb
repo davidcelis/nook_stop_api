@@ -5,5 +5,7 @@ module Mutations
 
     field :purchase, mutation: Mutations::Purchase
     field :store, mutation: Mutations::Store
+
+    field :craft, mutation: Mutations::Craft
   end
 end
