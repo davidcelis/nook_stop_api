@@ -26,6 +26,9 @@ gem "pagy"
 gem "graphql"
 gem "graphql-docs"
 
+# Add a development IDE to work with GraphQL queries
+gem "graphiql-rails"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "pry-rails"
@@ -35,9 +38,6 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
-  # Add a development IDE to work with GraphQL queries
-  gem "graphiql-rails"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

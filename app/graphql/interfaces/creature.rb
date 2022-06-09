@@ -7,7 +7,7 @@ module Interfaces::Creature
   field :name, String, null: false, description: "The name of this creature."
   field :description, String, null: false, description: "The description of this creature, courtesy of Blathers."
   field :catch_phrase, String, null: false, description: "The (more often than not) delightfully punny phrase uttered by the player when this creature is caught."
-  field :resale_value, Integer, null: false, description: "The resale value of this item in Bells."
+  field :resale_value, Integer, null: false, description: "The resale value of this creature in Bells."
   field :image_url, Scalars::URL, null: false, description: "A URL pointing to an image of this creature as shown in the Critterpedia."
 
   # Attributes about how or where to catch the creature
@@ -26,7 +26,7 @@ module Interfaces::Creature
   end
 
   # Attributes related to placing the creature as "furniture"
-  field :can_be_placed_outdoors, Boolean, null: false, description: "Whether or not this item can be placed outdoors."
+  field :can_be_placed_outdoors, Boolean, null: false, description: "Whether or not this creature can be placed outdoors."
   def can_be_placed_outdoors() true end
 
   field :is_a_surface, Boolean, null: false, description: "Whether or not this creature acts as a surface when placed as furniture, allowing Miscellaneous items and Photos to be placed on top of it."

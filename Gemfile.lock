@@ -129,6 +129,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.6-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.6-x86_64-linux)
+      racc (~> 1.4)
     pagy (5.10.1)
       activesupport
     pg (1.3.5)
@@ -205,6 +207,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   blueprinter

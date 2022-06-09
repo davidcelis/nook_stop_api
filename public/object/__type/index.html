@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="__Type GraphQL documentation">
+    <meta name="description" content="__Type GiraffeQL documentation">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Nook Stop API - __Type</title>
     <link rel="stylesheet" href="/assets/style.css">
@@ -32,7 +32,7 @@
   <li>
     <ul class="menu-root">
       <li>
-        <a href="/">GraphQL Reference</a>
+        <a href="/">GiraffeQL Reference</a>
     </ul>
   </li>
 
@@ -303,8 +303,15 @@
 
 
       <li>
-        <a href="/object/recipematerial/" class="sidebar-link">
-          RecipeMaterial
+        <a href="/object/recipematerialedge/" class="sidebar-link">
+          RecipeMaterialEdge
+        </a>
+      </li>
+
+
+      <li>
+        <a href="/object/recipematerialsconnection/" class="sidebar-link">
+          RecipeMaterialsConnection
         </a>
       </li>
 
@@ -352,6 +359,13 @@
 
 
       <li>
+        <a href="/object/storageconnection/" class="sidebar-link">
+          StorageConnection
+        </a>
+      </li>
+
+
+      <li>
         <a href="/object/storepayload/" class="sidebar-link">
           StorePayload
         </a>
@@ -359,8 +373,8 @@
 
 
       <li>
-        <a href="/object/storeditem/" class="sidebar-link">
-          StoredItem
+        <a href="/object/storeditemedge/" class="sidebar-link">
+          StoredItemEdge
         </a>
       </li>
 
@@ -1045,7 +1059,7 @@
 
         <h1>
 <a id="__type" class="anchor" href="#__type" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>__Type</h1>
-<p>The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the <code>__TypeKind</code> enum.</p>
+<p>The fundamental unit of any GiraffeQL Schema is the type. There are many kinds of types in GiraffeQL as represented by the <code>__TypeKind</code> enum.</p>
 <p>Depending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name and description, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.</p>
 <h2>
 <a id="fields" class="anchor" href="#fields" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fields</h2>

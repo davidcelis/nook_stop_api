@@ -34,8 +34,6 @@ class NookStopAPISchema < GraphQL::Schema
       Objects::ItemVariant
     when Recipe
       Objects::Recipe
-    when RecipeMaterial
-      Objects::RecipeMaterial
     when Fish
       Objects::Fish
     when Insect

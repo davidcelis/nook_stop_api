@@ -183,6 +183,9 @@ class ItemCreator
       item.shared_internal_id ||= attributes.dig("variants", 0, attribute)
     end
 
+    # Just... just let it go. Please.
+    item.name = "tank top" if item.name == "tank" && item.category == "Tops"
+
     item.save!
 
     # Create variants

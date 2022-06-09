@@ -16,6 +16,7 @@ class Enums::Species < Enums::BaseEnum
   value "EAGLE", value: "Eagle"
   value "ELEPHANT", value: "Elephant"
   value "FROG", value: "Frog"
+  # No Giraffes 😔
   value "GOAT", value: "Goat"
   value "GORILLA", value: "Gorilla"
   value "HAMSTER", value: "Hamster"

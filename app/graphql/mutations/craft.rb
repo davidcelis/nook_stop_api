@@ -4,7 +4,7 @@ class Mutations::Craft < Mutations::BaseMutation
   argument :name, String, required: true, description: "The name of the item you'd like to craft."
   argument :variant_id, String, required: false, description: "If the item has variants, the ID of its variant you'd like to craft. Defaults to whichever variant is listed first when viewing the item."
 
-  field :storage, [Objects::StoredItem], null: false, description: "The new state of your storage."
+  field :storage, Connections::StorageConnection, null: false, description: "The new state of your storage."
 
   def resolve(name:, variant_id: nil)
     item = Item.find_by(name: name)

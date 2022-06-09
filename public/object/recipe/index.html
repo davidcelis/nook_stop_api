@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Recipe GraphQL documentation">
+    <meta name="description" content="Recipe GiraffeQL documentation">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Nook Stop API - Recipe</title>
     <link rel="stylesheet" href="/assets/style.css">
@@ -32,7 +32,7 @@
   <li>
     <ul class="menu-root">
       <li>
-        <a href="/">GraphQL Reference</a>
+        <a href="/">GiraffeQL Reference</a>
     </ul>
   </li>
 
@@ -303,8 +303,15 @@
 
 
       <li>
-        <a href="/object/recipematerial/" class="sidebar-link">
-          RecipeMaterial
+        <a href="/object/recipematerialedge/" class="sidebar-link">
+          RecipeMaterialEdge
+        </a>
+      </li>
+
+
+      <li>
+        <a href="/object/recipematerialsconnection/" class="sidebar-link">
+          RecipeMaterialsConnection
         </a>
       </li>
 
@@ -352,6 +359,13 @@
 
 
       <li>
+        <a href="/object/storageconnection/" class="sidebar-link">
+          StorageConnection
+        </a>
+      </li>
+
+
+      <li>
         <a href="/object/storepayload/" class="sidebar-link">
           StorePayload
         </a>
@@ -359,8 +373,8 @@
 
 
       <li>
-        <a href="/object/storeditem/" class="sidebar-link">
-          StoredItem
+        <a href="/object/storeditemedge/" class="sidebar-link">
+          StoredItemEdge
         </a>
       </li>
 
@@ -1052,6 +1066,61 @@
    <li><code><a href="/interface/node">Node</a></code></li>
 </ul>
 <h2>
+<a id="connections" class="anchor" href="#connections" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Connections</h2>
+<div class="field-entry ">
+  <span id="materials" class="field-name connection-name anchored">materials (<code><a href="/object/recipematerialsconnection">RecipeMaterialsConnection!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>A list of materials required to craft this recipe's item, along with their amounts.</p>
+     <table class="arguments">
+  <thead>
+  <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><code class="anchored">after</code></td>
+  <td>
+    <code><a href="/scalar/string">String</a></code>
+  </td>
+  <td>
+    <p>Returns the elements in the list that come after the specified cursor.</p>
+   </td>
+  </tr>
+  <tr>
+  <td><code class="anchored">before</code></td>
+  <td>
+    <code><a href="/scalar/string">String</a></code>
+  </td>
+  <td>
+    <p>Returns the elements in the list that come before the specified cursor.</p>
+   </td>
+  </tr>
+  <tr>
+  <td><code class="anchored">first</code></td>
+  <td>
+    <code><a href="/scalar/int">Int</a></code>
+  </td>
+  <td>
+    <p>Returns the first <em>n</em> elements from the list.</p>
+   </td>
+  </tr>
+  <tr>
+  <td><code class="anchored">last</code></td>
+  <td>
+    <code><a href="/scalar/int">Int</a></code>
+  </td>
+  <td>
+    <p>Returns the last <em>n</em> elements from the list.</p>
+   </td>
+  </tr>
+  </tbody>
+</table>
+  </div>
+</div>
+<h2>
 <a id="fields" class="anchor" href="#fields" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fields</h2>
 <div class="field-entry ">
   <span id="addedinversion" class="field-name anchored">addedInVersion (<code><a href="/scalar/version">Version!</a></code>)</span>
@@ -1099,12 +1168,6 @@
   <span id="item" class="field-name anchored">item (<code><a href="/interface/item">Item!</a></code>)</span>
   <div class="description-wrapper">
    <p>The item crafted by this recipe.</p>
-  </div>
-</div>
-<div class="field-entry ">
-  <span id="materials" class="field-name anchored">materials (<code><a href="/object/recipematerial">[RecipeMaterial!]!</a></code>)</span>
-  <div class="description-wrapper">
-   <p>A list of materials required to craft this recipe's item, along with their amounts.</p>
   </div>
 </div>
 <div class="field-entry ">

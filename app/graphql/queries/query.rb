@@ -36,7 +36,7 @@ module Queries
     end
 
     field :creature, Interfaces::Creature, null: false, description: "Returns a single creature by name." do
-      argument :name, String, required: false, description: "The name of the creature."
+      argument :name, String, required: true, description: "The name of the creature."
     end
     def creature(name:)
       dataloader.with(Sources::ObjectByColumn, Creature, :name).load(name).tap do |creature|
@@ -44,19 +44,40 @@ module Queries
       end
     end
 
-    field :fish, Objects::Fish.connection_type, null: false, description: "Returns a paginated list of fish."
-    def fish
-      Fish.all
+    field :fish, Objects::Fish.connection_type, null: false, description: "Returns a paginated list of fish." do
+      argument :available_now, Boolean, required: false, description: "If provided, allows you to filter by fish that can be caught right at this very moment."
+      argument :hemisphere, Enums::Hemisphere, required: false, description: "Should be provided along with `availableNow` to specify where you're looking. Defaults to `NORTHERN`.", default_value: "northern"
+    end
+    def fish(available_now: nil, hemisphere: "northern")
+      if available_now
+        Fish.available_now(hemisphere: hemisphere)
+      else
+        Fish.all
+      end
     end
 
-    field :insects, Objects::Insect.connection_type, null: false, description: "Returns a paginated list of insects."
-    def insects
-      Insect.all
+    field :insects, Objects::Insect.connection_type, null: false, description: "Returns a paginated list of insects." do
+      argument :available_now, Boolean, required: false, description: "If provided, allows you to filter by insects that can be caught right at this very moment. If set to `false`, all creatures will be included."
+      argument :hemisphere, Enums::Hemisphere, required: false, description: "Should be provided along with `availableNow` to specify where you're looking. Defaults to `NORTHERN`.", default_value: "northern"
+    end
+    def insects(available_now: nil, hemisphere: "northern")
+      if available_now
+        Insect.available_now(hemisphere: hemisphere)
+      else
+        Insect.all
+      end
     end
 
-    field :sea_creatures, Objects::SeaCreature.connection_type, null: false, description: "Returns a paginated list of sea creatures."
-    def sea_creatures
-      SeaCreature.all
+    field :sea_creatures, Objects::SeaCreature.connection_type, null: false, description: "Returns a paginated list of sea creatures." do
+      argument :available_now, Boolean, required: false, description: "If provided, allows you to filter by sea creatures that can be caught right at this very moment. If set to `false`, all creatures will be included."
+      argument :hemisphere, Enums::Hemisphere, required: false, description: "Should be provided along with `availableNow` to specify where you're looking. Defaults to `NORTHERN`.", default_value: "northern"
+    end
+    def sea_creatures(available_now: nil, hemisphere: "northern")
+      if available_now
+        SeaCreature.available_now(hemisphere: hemisphere)
+      else
+        SeaCreature.all
+      end
     end
 
     field :villager, Objects::Villager, null: false, description: "Returns a single villager by name." do
@@ -68,12 +89,18 @@ module Queries
       end
     end
 
-    field :villagers, Objects::Villager.connection_type, null: false, description: "Returns a paginated list of villagers."
-    def villagers
-      Villager.all
+    field :villagers, Objects::Villager.connection_type, null: false, description: "Returns a paginated list of villagers." do
+      argument :species, Enums::Species, required: false, description: "The species of villager you would like to filter by, if any."
+    end
+    def villagers(species: nil)
+      if species
+        Villager.where(species: species)
+      else
+        Villager.all
+      end
     end
 
-    field :storage, [Objects::StoredItem], null: false, description: "Returns a list of items you currently have in storage."
+    field :storage, Connections::StorageConnection, null: false, description: "Returns a list of items you currently have in storage."
     def storage
       JSON.parse(context[:account][:storage])
     end

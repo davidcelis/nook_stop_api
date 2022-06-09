@@ -11,7 +11,7 @@ class Objects::Recipe < Objects::BaseObject
     dataloader.with(Sources::ObjectByColumn, ::Item, :id).load(object.item_id)
   end
 
-  field :materials, [Objects::RecipeMaterial], null: false, description: "A list of materials required to craft this recipe's item, along with their amounts."
+  field :materials, Connections::RecipeMaterialsConnection, null: false, description: "A list of materials required to craft this recipe's item, along with their amounts."
   def materials
     dataloader.with(Sources::ObjectsByColumn, ::RecipeMaterial, :recipe_id).load(object.id)
   end

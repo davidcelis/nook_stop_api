@@ -5,7 +5,7 @@ class Mutations::Store < Mutations::BaseMutation
   argument :variant_id, String, required: false, description: "If storing an item, the ID of its variant you're storing. Defaults to whichever variant is listed first when viewing the item."
   argument :count, Integer, required: false, description: "The number of this item you're putting into storage.", default_value: 1
 
-  field :storage, [Objects::StoredItem], null: false, description: "The new state of your storage."
+  field :storage, Connections::StorageConnection, null: false, description: "The new state of your storage."
   field :transaction_id, String, null: false, description: "A unique Transaction ID for your records. Consider this to be a kind of receipt."
 
   def resolve(name:, count:, variant_id: nil)

@@ -1117,7 +1117,27 @@ type CraftPayload {
   """
   The new state of your storage.
   """
-  storage: [StoredItem!]!
+  storage(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): StorageConnection!
 }
 
 """
@@ -1153,7 +1173,7 @@ interface Creature {
   addedInVersion: Version!
 
   """
-  Whether or not this item can be placed outdoors.
+  Whether or not this creature can be placed outdoors.
   """
   canBePlacedOutdoors: Boolean!
 
@@ -1204,7 +1224,7 @@ interface Creature {
   name: String!
 
   """
-  The resale value of this item in Bells.
+  The resale value of this creature in Bells.
   """
   resaleValue: Int!
 
@@ -1720,7 +1740,7 @@ type Fish implements Creature & Node {
   addedInVersion: Version!
 
   """
-  Whether or not this item can be placed outdoors.
+  Whether or not this creature can be placed outdoors.
   """
   canBePlacedOutdoors: Boolean!
 
@@ -1791,7 +1811,7 @@ type Fish implements Creature & Node {
   name: String!
 
   """
-  The resale value of this item in Bells.
+  The resale value of this creature in Bells.
   """
   resaleValue: Int!
 
@@ -3194,7 +3214,7 @@ type Insect implements Creature & Node {
   addedInVersion: Version!
 
   """
-  Whether or not this item can be placed outdoors.
+  Whether or not this creature can be placed outdoors.
   """
   canBePlacedOutdoors: Boolean!
 
@@ -3250,7 +3270,7 @@ type Insect implements Creature & Node {
   name: String!
 
   """
-  The resale value of this item in Bells.
+  The resale value of this creature in Bells.
   """
   resaleValue: Int!
 
@@ -4424,7 +4444,27 @@ type PurchasePayload {
   """
   The new state of your storage.
   """
-  storage: [StoredItem!]!
+  storage(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): StorageConnection!
 
   """
   A unique Transaction ID for your records. Consider this to be a kind of receipt.
@@ -4445,7 +4485,7 @@ type Query {
     """
     The name of the creature.
     """
-    name: String
+    name: String!
   ): Creature!
 
   """
@@ -4458,6 +4498,11 @@ type Query {
     after: String
 
     """
+    If provided, allows you to filter by fish that can be caught right at this very moment.
+    """
+    availableNow: Boolean
+
+    """
     Returns the elements in the list that come before the specified cursor.
     """
     before: String
@@ -4466,6 +4511,11 @@ type Query {
     Returns the first _n_ elements from the list.
     """
     first: Int
+
+    """
+    Should be provided along with `availableNow` to specify where you're looking. Defaults to `NORTHERN`.
+    """
+    hemisphere: Hemisphere = NORTHERN
 
     """
     Returns the last _n_ elements from the list.
@@ -4483,6 +4533,12 @@ type Query {
     after: String
 
     """
+    If provided, allows you to filter by insects that can be caught right at
+    this very moment. If set to `false`, all creatures will be included.
+    """
+    availableNow: Boolean
+
+    """
     Returns the elements in the list that come before the specified cursor.
     """
     before: String
@@ -4491,6 +4547,11 @@ type Query {
     Returns the first _n_ elements from the list.
     """
     first: Int
+
+    """
+    Should be provided along with `availableNow` to specify where you're looking. Defaults to `NORTHERN`.
+    """
+    hemisphere: Hemisphere = NORTHERN
 
     """
     Returns the last _n_ elements from the list.
@@ -4598,6 +4659,42 @@ type Query {
     after: String
 
     """
+    If provided, allows you to filter by sea creatures that can be caught right
+    at this very moment. If set to `false`, all creatures will be included.
+    """
+    availableNow: Boolean
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Should be provided along with `availableNow` to specify where you're looking. Defaults to `NORTHERN`.
+    """
+    hemisphere: Hemisphere = NORTHERN
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): SeaCreatureConnection!
+
+  """
+  Returns a list of items you currently have in storage.
+  """
+  storage(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
     Returns the elements in the list that come before the specified cursor.
     """
     before: String
@@ -4611,12 +4708,7 @@ type Query {
     Returns the last _n_ elements from the list.
     """
     last: Int
-  ): SeaCreatureConnection!
-
-  """
-  Returns a list of items you currently have in storage.
-  """
-  storage: [StoredItem!]!
+  ): StorageConnection!
 
   """
   Returns a single villager by name.
@@ -4651,6 +4743,11 @@ type Query {
     Returns the last _n_ elements from the list.
     """
     last: Int
+
+    """
+    The species of villager you would like to filter by, if any.
+    """
+    species: Species
   ): VillagerConnection!
 }
 
@@ -4701,7 +4798,27 @@ type Recipe implements Node {
   """
   A list of materials required to craft this recipe's item, along with their amounts.
   """
-  materials: [RecipeMaterial!]!
+  materials(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): RecipeMaterialsConnection!
 
   """
   The price of this recipe in Bells. If not present, it means the recipe cannot be bought with Bells.
@@ -4776,29 +4893,50 @@ type RecipeEdge {
 }
 
 """
-Materials are consumed to craft an item using a DIY Recipe.
+An edge in a connection.
 """
-type RecipeMaterial implements Node {
+type RecipeMaterialEdge {
   """
-  The number of this item used by the recipe.
+  The number of this material required by the recipe.
   """
   count: Int!
 
   """
-  ID of the object.
+  A cursor for use in pagination.
   """
-  id: ID!
+  cursor: String!
 
   """
-  The item used by the recipe.
+  The item at the end of the edge.
   """
-  item: RecipeMaterialItem!
+  node: RecipeMaterialItem
 }
 
 """
 Items which may be used to craft a recipe.
 """
 union RecipeMaterialItem = CeilingDecor | DressUp | Fish | Flooring | HandheldItem | Houseware | MiscellaneousFurniture | OtherItem | SeaCreature | WallMountedFurniture | Wallpaper
+
+"""
+The connection type for RecipeMaterialItem.
+"""
+type RecipeMaterialsConnection {
+  """
+  A list of edges.
+  """
+  edges: [RecipeMaterialEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [RecipeMaterialItem]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
 
 """
 Rugs come in a variety of sizes and can decorate a room's floor with or without furniture placed on top.
@@ -4976,7 +5114,7 @@ type SeaCreature implements Creature & Node {
   addedInVersion: Version!
 
   """
-  Whether or not this item can be placed outdoors.
+  Whether or not this creature can be placed outdoors.
   """
   canBePlacedOutdoors: Boolean!
 
@@ -5042,7 +5180,7 @@ type SeaCreature implements Creature & Node {
   name: String!
 
   """
-  The resale value of this item in Bells.
+  The resale value of this creature in Bells.
   """
   resaleValue: Int!
 
@@ -5569,6 +5707,27 @@ Items which may be kept in storage.
 union StorableItem = Accessory | Artwork | Bag | Bottom | CeilingDecor | DressUp | Fencing | Fish | Flooring | Fossil | Gyroid | HandheldItem | Headwear | Houseware | Insect | InteriorStructure | ItemVariant | MiscellaneousFurniture | Music | OtherItem | Rug | SeaCreature | Shoes | Socks | Top | Umbrella | VillagerPhoto | VillagerPoster | WallMountedFurniture | Wallpaper | Wetsuit
 
 """
+The connection type for StorableItem.
+"""
+type StorageConnection {
+  """
+  A list of edges.
+  """
+  edges: [StoredItemEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [StorableItem]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""
 Autogenerated input type of Store
 """
 input StoreInput {
@@ -5606,7 +5765,27 @@ type StorePayload {
   """
   The new state of your storage.
   """
-  storage: [StoredItem!]!
+  storage(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): StorageConnection!
 
   """
   A unique Transaction ID for your records. Consider this to be a kind of receipt.
@@ -5615,23 +5794,23 @@ type StorePayload {
 }
 
 """
-An item in your storage.
+An edge in a connection.
 """
-type StoredItem implements Node {
+type StoredItemEdge {
   """
   The number of this item you have in storage.
   """
   count: Int!
 
   """
-  ID of the object.
+  A cursor for use in pagination.
   """
-  id: ID!
+  cursor: String!
 
   """
-  The stored item.
+  The item at the end of the edge.
   """
-  item: StorableItem!
+  node: StorableItem
 }
 
 """
@@ -6025,7 +6204,7 @@ Villagers are the animal friends who reside on the player's island.
 """
 type Villager implements Node {
   """
-  The version of Animal Crossing New Horizons in which this recipe first appeared.
+  The version of Animal Crossing New Horizons in which this villager first appeared.
   """
   addedInVersion: Version!
 

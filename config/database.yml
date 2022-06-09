@@ -80,7 +80,4 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: animal_crossing_api_production
-  username: animal_crossing_api
-  password: <%= ENV["ANIMAL_CROSSING_API_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>

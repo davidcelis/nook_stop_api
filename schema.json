@@ -3888,23 +3888,62 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "StoredItem",
-                      "ofType": null
-                    }
-                  }
+                  "kind": "OBJECT",
+                  "name": "StorageConnection",
+                  "ofType": null
                 }
               },
               "isDeprecated": false,
               "deprecationReason": null,
               "args": [
-
+                {
+                  "name": "after",
+                  "description": "Returns the elements in the list that come after the specified cursor.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "before",
+                  "description": "Returns the elements in the list that come before the specified cursor.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "first",
+                  "description": "Returns the first _n_ elements from the list.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "last",
+                  "description": "Returns the last _n_ elements from the list.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                }
               ]
             }
           ],
@@ -4080,7 +4119,7 @@
             },
             {
               "name": "canBePlacedOutdoors",
-              "description": "Whether or not this item can be placed outdoors.",
+              "description": "Whether or not this creature can be placed outdoors.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -4256,7 +4295,7 @@
             },
             {
               "name": "resaleValue",
-              "description": "The resale value of this item in Bells.",
+              "description": "The resale value of this creature in Bells.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -6081,7 +6120,7 @@
             },
             {
               "name": "canBePlacedOutdoors",
-              "description": "Whether or not this item can be placed outdoors.",
+              "description": "Whether or not this creature can be placed outdoors.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -6325,7 +6364,7 @@
             },
             {
               "name": "resaleValue",
-              "description": "The resale value of this item in Bells.",
+              "description": "The resale value of this creature in Bells.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -11582,7 +11621,7 @@
             },
             {
               "name": "canBePlacedOutdoors",
-              "description": "Whether or not this item can be placed outdoors.",
+              "description": "Whether or not this creature can be placed outdoors.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -11776,7 +11815,7 @@
             },
             {
               "name": "resaleValue",
-              "description": "The resale value of this item in Bells.",
+              "description": "The resale value of this creature in Bells.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -15131,11 +15170,6 @@
             },
             {
               "kind": "OBJECT",
-              "name": "RecipeMaterial",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
               "name": "Rug",
               "ofType": null
             },
@@ -15152,11 +15186,6 @@
             {
               "kind": "OBJECT",
               "name": "Socks",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "StoredItem",
               "ofType": null
             },
             {
@@ -16234,23 +16263,62 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "StoredItem",
-                      "ofType": null
-                    }
-                  }
+                  "kind": "OBJECT",
+                  "name": "StorageConnection",
+                  "ofType": null
                 }
               },
               "isDeprecated": false,
               "deprecationReason": null,
               "args": [
-
+                {
+                  "name": "after",
+                  "description": "Returns the elements in the list that come after the specified cursor.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "before",
+                  "description": "Returns the elements in the list that come before the specified cursor.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "first",
+                  "description": "Returns the first _n_ elements from the list.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "last",
+                  "description": "Returns the last _n_ elements from the list.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                }
               ]
             },
             {
@@ -16321,9 +16389,13 @@
                   "name": "name",
                   "description": "The name of the creature.",
                   "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
                   },
                   "defaultValue": null,
                   "isDeprecated": false,
@@ -16393,6 +16465,30 @@
                   "defaultValue": null,
                   "isDeprecated": false,
                   "deprecationReason": null
+                },
+                {
+                  "name": "availableNow",
+                  "description": "If provided, allows you to filter by fish that can be caught right at this very moment.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "hemisphere",
+                  "description": "Should be provided along with `availableNow` to specify where you're looking. Defaults to `NORTHERN`.",
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "Hemisphere",
+                    "ofType": null
+                  },
+                  "defaultValue": "NORTHERN",
+                  "isDeprecated": false,
+                  "deprecationReason": null
                 }
               ]
             },
@@ -16456,6 +16552,30 @@
                     "ofType": null
                   },
                   "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "availableNow",
+                  "description": "If provided, allows you to filter by insects that can be caught right at this very moment. If set to `false`, all creatures will be included.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "hemisphere",
+                  "description": "Should be provided along with `availableNow` to specify where you're looking. Defaults to `NORTHERN`.",
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "Hemisphere",
+                    "ofType": null
+                  },
+                  "defaultValue": "NORTHERN",
                   "isDeprecated": false,
                   "deprecationReason": null
                 }
@@ -16793,6 +16913,30 @@
                   "defaultValue": null,
                   "isDeprecated": false,
                   "deprecationReason": null
+                },
+                {
+                  "name": "availableNow",
+                  "description": "If provided, allows you to filter by sea creatures that can be caught right at this very moment. If set to `false`, all creatures will be included.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "hemisphere",
+                  "description": "Should be provided along with `availableNow` to specify where you're looking. Defaults to `NORTHERN`.",
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "Hemisphere",
+                    "ofType": null
+                  },
+                  "defaultValue": "NORTHERN",
+                  "isDeprecated": false,
+                  "deprecationReason": null
                 }
               ]
             },
@@ -16803,23 +16947,62 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "StoredItem",
-                      "ofType": null
-                    }
-                  }
+                  "kind": "OBJECT",
+                  "name": "StorageConnection",
+                  "ofType": null
                 }
               },
               "isDeprecated": false,
               "deprecationReason": null,
               "args": [
-
+                {
+                  "name": "after",
+                  "description": "Returns the elements in the list that come after the specified cursor.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "before",
+                  "description": "Returns the elements in the list that come before the specified cursor.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "first",
+                  "description": "Returns the first _n_ elements from the list.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "last",
+                  "description": "Returns the last _n_ elements from the list.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                }
               ]
             },
             {
@@ -16912,6 +17095,18 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "species",
+                  "description": "The species of villager you would like to filter by, if any.",
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "Species",
                     "ofType": null
                   },
                   "defaultValue": null,
@@ -17076,23 +17271,62 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "RecipeMaterial",
-                      "ofType": null
-                    }
-                  }
+                  "kind": "OBJECT",
+                  "name": "RecipeMaterialsConnection",
+                  "ofType": null
                 }
               },
               "isDeprecated": false,
               "deprecationReason": null,
               "args": [
-
+                {
+                  "name": "after",
+                  "description": "Returns the elements in the list that come after the specified cursor.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "before",
+                  "description": "Returns the elements in the list that come before the specified cursor.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "first",
+                  "description": "Returns the first _n_ elements from the list.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "last",
+                  "description": "Returns the last _n_ elements from the list.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                }
               ]
             },
             {
@@ -17353,20 +17587,16 @@
         },
         {
           "kind": "OBJECT",
-          "name": "RecipeMaterial",
-          "description": "Materials are consumed to craft an item using a DIY Recipe.",
+          "name": "RecipeMaterialEdge",
+          "description": "An edge in a connection.",
           "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Node",
-              "ofType": null
-            }
+
           ],
           "possibleTypes": null,
           "fields": [
             {
               "name": "count",
-              "description": "The number of this item used by the recipe.",
+              "description": "The number of this material required by the recipe.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -17383,14 +17613,14 @@
               ]
             },
             {
-              "name": "id",
-              "description": "ID of the object.",
+              "name": "cursor",
+              "description": "A cursor for use in pagination.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "ID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -17401,16 +17631,12 @@
               ]
             },
             {
-              "name": "item",
-              "description": "The item used by the recipe.",
+              "name": "node",
+              "description": "The item at the end of the edge.",
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "UNION",
-                  "name": "RecipeMaterialItem",
-                  "ofType": null
-                }
+                "kind": "UNION",
+                "name": "RecipeMaterialItem",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null,
@@ -17485,6 +17711,91 @@
             }
           ],
           "fields": null,
+          "inputFields": null,
+          "enumValues": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "RecipeMaterialsConnection",
+          "description": "The connection type for RecipeMaterialItem.",
+          "interfaces": [
+
+          ],
+          "possibleTypes": null,
+          "fields": [
+            {
+              "name": "edges",
+              "description": "A list of edges.",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "RecipeMaterialEdge",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+
+              ]
+            },
+            {
+              "name": "nodes",
+              "description": "A list of nodes.",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "UNION",
+                  "name": "RecipeMaterialItem",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+
+              ]
+            },
+            {
+              "name": "pageInfo",
+              "description": "Information to aid in pagination.",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageInfo",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+
+              ]
+            },
+            {
+              "name": "totalCount",
+              "description": null,
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+
+              ]
+            }
+          ],
           "inputFields": null,
           "enumValues": null
         },
@@ -18126,7 +18437,7 @@
             },
             {
               "name": "canBePlacedOutdoors",
-              "description": "Whether or not this item can be placed outdoors.",
+              "description": "Whether or not this creature can be placed outdoors.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -18352,7 +18663,7 @@
             },
             {
               "name": "resaleValue",
-              "description": "The resale value of this item in Bells.",
+              "description": "The resale value of this creature in Bells.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -20413,6 +20724,91 @@
           "enumValues": null
         },
         {
+          "kind": "OBJECT",
+          "name": "StorageConnection",
+          "description": "The connection type for StorableItem.",
+          "interfaces": [
+
+          ],
+          "possibleTypes": null,
+          "fields": [
+            {
+              "name": "edges",
+              "description": "A list of edges.",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "StoredItemEdge",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+
+              ]
+            },
+            {
+              "name": "nodes",
+              "description": "A list of nodes.",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "UNION",
+                  "name": "StorableItem",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+
+              ]
+            },
+            {
+              "name": "pageInfo",
+              "description": "Information to aid in pagination.",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageInfo",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+
+              ]
+            },
+            {
+              "name": "totalCount",
+              "description": null,
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+
+              ]
+            }
+          ],
+          "inputFields": null,
+          "enumValues": null
+        },
+        {
           "kind": "INPUT_OBJECT",
           "name": "StoreInput",
           "description": "Autogenerated input type of Store",
@@ -20505,23 +20901,62 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "StoredItem",
-                      "ofType": null
-                    }
-                  }
+                  "kind": "OBJECT",
+                  "name": "StorageConnection",
+                  "ofType": null
                 }
               },
               "isDeprecated": false,
               "deprecationReason": null,
               "args": [
-
+                {
+                  "name": "after",
+                  "description": "Returns the elements in the list that come after the specified cursor.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "before",
+                  "description": "Returns the elements in the list that come before the specified cursor.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "first",
+                  "description": "Returns the first _n_ elements from the list.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "last",
+                  "description": "Returns the last _n_ elements from the list.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                }
               ]
             },
             {
@@ -20548,14 +20983,10 @@
         },
         {
           "kind": "OBJECT",
-          "name": "StoredItem",
-          "description": "An item in your storage.",
+          "name": "StoredItemEdge",
+          "description": "An edge in a connection.",
           "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Node",
-              "ofType": null
-            }
+
           ],
           "possibleTypes": null,
           "fields": [
@@ -20578,14 +21009,14 @@
               ]
             },
             {
-              "name": "id",
-              "description": "ID of the object.",
+              "name": "cursor",
+              "description": "A cursor for use in pagination.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "ID",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -20596,16 +21027,12 @@
               ]
             },
             {
-              "name": "item",
-              "description": "The stored item.",
+              "name": "node",
+              "description": "The item at the end of the edge.",
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "UNION",
-                  "name": "StorableItem",
-                  "ofType": null
-                }
+                "kind": "UNION",
+                "name": "StorableItem",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null,
@@ -22001,7 +22428,7 @@
           "fields": [
             {
               "name": "addedInVersion",
-              "description": "The version of Animal Crossing New Horizons in which this recipe first appeared.",
+              "description": "The version of Animal Crossing New Horizons in which this villager first appeared.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,

@@ -82,5 +82,5 @@ class Objects::Villager < Objects::BaseObject
   end
 
   # Metadata
-  field :added_in_version, Scalars::Version, null: false, description: "The version of Animal Crossing New Horizons in which this recipe first appeared."
+  field :added_in_version, Scalars::Version, null: false, description: "The version of Animal Crossing New Horizons in which this villager first appeared."
 end

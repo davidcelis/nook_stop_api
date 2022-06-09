@@ -5,7 +5,7 @@ class Mutations::Purchase < Mutations::BaseMutation
   argument :variant_id, String, required: false, description: "The ID of the variant you would like to purchase. Defaults to whichever variant is listed first when viewing the item."
 
   field :balance, Integer, null: false, description: "Your new account balance."
-  field :storage, [Objects::StoredItem], null: false, description: "The new state of your storage."
+  field :storage, Connections::StorageConnection, null: false, description: "The new state of your storage."
   field :transaction_id, String, null: false, description: "A unique Transaction ID for your records. Consider this to be a kind of receipt."
 
   def resolve(name:, variant_id: nil)
@@ -16,7 +16,10 @@ class Mutations::Purchase < Mutations::BaseMutation
 
     new_balance = context[:account][:bells] - item.price
     if new_balance < 0
-      raise GraphQL::ExecutionError, "Oops! This item costs #{item.price} Bells but your account balance is #{context[:account][:bells]} Bells. You need to deposit #{-new_balance} Bells before purchasing this item."
+      raise GraphQL::ExecutionError.new("Oops! Your current balance can't cover the cost of this item.", extensions: {
+        "balance" => context[:account][:bells],
+        "price" => item.price
+      })
     end
 
     variant = variant_id ? item.variants.find_by!(unique_internal_id: variant_id) : item.variants.first
