@@ -1,0 +1,16 @@
+fly.toml
+
+.git
+tmp
+!tmp/pids/.keep
+log
+.bundle
+
+db/*.sqlite3
+db/*.sqlite3-*
+
+storage
+config/master.key
+config/credentials/*.key
+
+node_modules
